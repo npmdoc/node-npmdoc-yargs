@@ -46,767 +46,768 @@
     font-weight: bold;
 }
 </style>
-<h1>api-documentation for
+<h1>api documentation for
     <a
-        
+
         href="http://yargs.js.org/"
-        
+
     >yargs (v7.0.2)</a>
 </h1>
+<h4>yargs the modern, pirate-themed, successor to optimist.</h4>
 <div class="apidocSectionDiv"><a
     href="#apidoc.tableOfContents"
     id="apidoc.tableOfContents"
 ><h1>table of contents</h1></a><ol>
-    
+
     <li class="apidocModuleLi"><a href="#apidoc.module.yargs">module yargs</a><ol>
-        
+
         <li>
-            
+
             <span class="apidocSignatureSpan">boolean <span class="apidocSignatureSpan">yargs.</span>parsed</span>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs._getLoggerInstance">
             function <span class="apidocSignatureSpan">yargs.</span>_getLoggerInstance
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs._getParseContext">
             function <span class="apidocSignatureSpan">yargs.</span>_getParseContext
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs._hasOutput">
             function <span class="apidocSignatureSpan">yargs.</span>_hasOutput
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs._hasParseCallback">
             function <span class="apidocSignatureSpan">yargs.</span>_hasParseCallback
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs._parseArgs">
             function <span class="apidocSignatureSpan">yargs.</span>_parseArgs
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs._runValidation">
             function <span class="apidocSignatureSpan">yargs.</span>_runValidation
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs._setHasOutput">
             function <span class="apidocSignatureSpan">yargs.</span>_setHasOutput
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.addHelpOpt">
             function <span class="apidocSignatureSpan">yargs.</span>addHelpOpt
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.alias">
             function <span class="apidocSignatureSpan">yargs.</span>alias
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.array">
             function <span class="apidocSignatureSpan">yargs.</span>array
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.boolean">
             function <span class="apidocSignatureSpan">yargs.</span>boolean
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.check">
             function <span class="apidocSignatureSpan">yargs.</span>check
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.choices">
             function <span class="apidocSignatureSpan">yargs.</span>choices
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.coerce">
             function <span class="apidocSignatureSpan">yargs.</span>coerce
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.command">
             function <span class="apidocSignatureSpan">yargs.</span>command
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.commandDir">
             function <span class="apidocSignatureSpan">yargs.</span>commandDir
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.completion">
             function <span class="apidocSignatureSpan">yargs.</span>completion
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.config">
             function <span class="apidocSignatureSpan">yargs.</span>config
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.conflicts">
             function <span class="apidocSignatureSpan">yargs.</span>conflicts
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.count">
             function <span class="apidocSignatureSpan">yargs.</span>count
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.default">
             function <span class="apidocSignatureSpan">yargs.</span>default
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.defaults">
             function <span class="apidocSignatureSpan">yargs.</span>defaults
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.demand">
             function <span class="apidocSignatureSpan">yargs.</span>demand
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.demandCommand">
             function <span class="apidocSignatureSpan">yargs.</span>demandCommand
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.demandOption">
             function <span class="apidocSignatureSpan">yargs.</span>demandOption
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.describe">
             function <span class="apidocSignatureSpan">yargs.</span>describe
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.detectLocale">
             function <span class="apidocSignatureSpan">yargs.</span>detectLocale
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.env">
             function <span class="apidocSignatureSpan">yargs.</span>env
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.epilog">
             function <span class="apidocSignatureSpan">yargs.</span>epilog
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.epilogue">
             function <span class="apidocSignatureSpan">yargs.</span>epilogue
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.example">
             function <span class="apidocSignatureSpan">yargs.</span>example
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.exit">
             function <span class="apidocSignatureSpan">yargs.</span>exit
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.exitProcess">
             function <span class="apidocSignatureSpan">yargs.</span>exitProcess
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.fail">
             function <span class="apidocSignatureSpan">yargs.</span>fail
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.getCommandInstance">
             function <span class="apidocSignatureSpan">yargs.</span>getCommandInstance
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.getCompletion">
             function <span class="apidocSignatureSpan">yargs.</span>getCompletion
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.getContext">
             function <span class="apidocSignatureSpan">yargs.</span>getContext
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.getDemandedCommands">
             function <span class="apidocSignatureSpan">yargs.</span>getDemandedCommands
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.getDemandedOptions">
             function <span class="apidocSignatureSpan">yargs.</span>getDemandedOptions
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.getDetectLocale">
             function <span class="apidocSignatureSpan">yargs.</span>getDetectLocale
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.getExitProcess">
             function <span class="apidocSignatureSpan">yargs.</span>getExitProcess
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.getGroups">
             function <span class="apidocSignatureSpan">yargs.</span>getGroups
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.getOptions">
             function <span class="apidocSignatureSpan">yargs.</span>getOptions
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.getStrict">
             function <span class="apidocSignatureSpan">yargs.</span>getStrict
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.getUsageInstance">
             function <span class="apidocSignatureSpan">yargs.</span>getUsageInstance
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.getValidationInstance">
             function <span class="apidocSignatureSpan">yargs.</span>getValidationInstance
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.global">
             function <span class="apidocSignatureSpan">yargs.</span>global
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.group">
             function <span class="apidocSignatureSpan">yargs.</span>group
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.help">
             function <span class="apidocSignatureSpan">yargs.</span>help
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.implies">
             function <span class="apidocSignatureSpan">yargs.</span>implies
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.locale">
             function <span class="apidocSignatureSpan">yargs.</span>locale
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.nargs">
             function <span class="apidocSignatureSpan">yargs.</span>nargs
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.normalize">
             function <span class="apidocSignatureSpan">yargs.</span>normalize
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.number">
             function <span class="apidocSignatureSpan">yargs.</span>number
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.option">
             function <span class="apidocSignatureSpan">yargs.</span>option
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.options">
             function <span class="apidocSignatureSpan">yargs.</span>options
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.parse">
             function <span class="apidocSignatureSpan">yargs.</span>parse
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.pkgConf">
             function <span class="apidocSignatureSpan">yargs.</span>pkgConf
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.recommendCommands">
             function <span class="apidocSignatureSpan">yargs.</span>recommendCommands
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.require">
             function <span class="apidocSignatureSpan">yargs.</span>require
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.required">
             function <span class="apidocSignatureSpan">yargs.</span>required
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.requiresArg">
             function <span class="apidocSignatureSpan">yargs.</span>requiresArg
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.reset">
             function <span class="apidocSignatureSpan">yargs.</span>reset
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.resetOptions">
             function <span class="apidocSignatureSpan">yargs.</span>resetOptions
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.showCompletionScript">
             function <span class="apidocSignatureSpan">yargs.</span>showCompletionScript
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.showHelp">
             function <span class="apidocSignatureSpan">yargs.</span>showHelp
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.showHelpOnFail">
             function <span class="apidocSignatureSpan">yargs.</span>showHelpOnFail
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.skipValidation">
             function <span class="apidocSignatureSpan">yargs.</span>skipValidation
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.strict">
             function <span class="apidocSignatureSpan">yargs.</span>strict
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.string">
             function <span class="apidocSignatureSpan">yargs.</span>string
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.terminalWidth">
             function <span class="apidocSignatureSpan">yargs.</span>terminalWidth
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.updateLocale">
             function <span class="apidocSignatureSpan">yargs.</span>updateLocale
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.updateStrings">
             function <span class="apidocSignatureSpan">yargs.</span>updateStrings
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.usage">
             function <span class="apidocSignatureSpan">yargs.</span>usage
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.version">
             function <span class="apidocSignatureSpan">yargs.</span>version
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.wrap">
             function <span class="apidocSignatureSpan">yargs.</span>wrap
             <span class="apidocSignatureSpan">()</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.yerror">
             function <span class="apidocSignatureSpan">yargs.</span>yerror
             <span class="apidocSignatureSpan">(msg)</span>
             </a>
-            
+
         </li>
-        
+
         <li>
-            
+
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">yargs.</span>argv</span>
-            
+
         </li>
-        
+
         <li>
-            
+
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">yargs.</span>yerror.prototype</span>
-            
+
         </li>
-        
+
     </ol></li>
-    
+
     <li class="apidocModuleLi"><a href="#apidoc.module.yargs.yerror">module yargs.yerror</a><ol>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.yerror.yerror">
             function <span class="apidocSignatureSpan">yargs.</span>yerror
             <span class="apidocSignatureSpan">(msg)</span>
             </a>
-            
+
         </li>
-        
+
     </ol></li>
-    
+
     <li class="apidocModuleLi"><a href="#apidoc.module.yargs.yerror.prototype">module yargs.yerror.prototype</a><ol>
-        
+
         <li>
-            
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs.yerror.prototype.constructor">
             function <span class="apidocSignatureSpan">yargs.yerror.prototype.</span>constructor
             <span class="apidocSignatureSpan">(msg)</span>
             </a>
-            
+
         </li>
-        
+
     </ol></li>
-    
+
 </ol></div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.yargs" id="apidoc.module.yargs">module yargs</a></h1>
-    
-    
-    
-    
+
+
+
+
     <h2>
         <a href="#apidoc.element.yargs._getLoggerInstance" id="apidoc.element.yargs._getLoggerInstance">
         function <span class="apidocSignatureSpan">yargs.</span>_getLoggerInstance
@@ -833,9 +834,9 @@ if (fails.length) {
   if (yargs.getExitProcess()) setBlocking(true)
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs._getParseContext" id="apidoc.element.yargs._getParseContext">
         function <span class="apidocSignatureSpan">yargs.</span>_getParseContext
@@ -862,9 +863,9 @@ if (commandKeys.length &#x3e; 0) {
   argv._.slice(currentContext.commands.length).forEach(function (key) {
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs._hasOutput" id="apidoc.element.yargs._hasOutput">
         function <span class="apidocSignatureSpan">yargs.</span>_hasOutput
@@ -890,9 +891,9 @@ if (!yargs.<span class="apidocCodeKeywordSpan">_hasOutput</span>()) {
 if (!yargs._hasOutput()) yargs._runValidation(innerArgv, aliases, positionalMap, yargs.parsed.error)
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs._hasParseCallback" id="apidoc.element.yargs._hasParseCallback">
         function <span class="apidocSignatureSpan">yargs.</span>_hasParseCallback
@@ -918,9 +919,9 @@ if (!yargs._hasOutput()) yargs._runValidation(innerArgv, aliases, positionalMap,
 }
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs._parseArgs" id="apidoc.element.yargs._parseArgs">
         function <span class="apidocSignatureSpan">yargs.</span>_parseArgs
@@ -935,11 +936,11 @@ if (!yargs._hasOutput()) yargs._runValidation(innerArgv, aliases, positionalMap,
   // options object below.
   if (yargs.parsed === false) {
     if (typeof yargs.getUsageInstance().getUsage() === &#x27;undefined&#x27;) {
-      yargs.usage(&#x27;$0 &#x27; + (parentCommands.length ? parentCommands.join(&#x27; &#x27;) + &#x27; &#x27; : &#x27;&#x27;) \
-+ commandHandler.original)
+      yargs.usage(&#x27;$0 &#x27; + (parentCommands.length ? parentCommands.join(&#x27; &#x27;) + &#x27; &#x27; : &#x27;&#x27;) +
+commandHandler.original)
     }
-    innerArgv = innerYargs ? innerYargs.<span class="apidocCodeKeywordSpan">_parseArgs</span>(null, null, true) : yargs._parseAr\
-gs(null, null, true)
+    innerArgv = innerYargs ? innerYargs.<span class="apidocCodeKeywordSpan">_parseArgs</span>(null, null, true) : yargs._parseArgs
+(null, null, true)
   } else {
     innerArgv = yargs.parsed.argv
   }
@@ -949,9 +950,9 @@ gs(null, null, true)
 } else if (typeof commandHandler.builder === &#x27;object&#x27;) {
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs._runValidation" id="apidoc.element.yargs._runValidation">
         function <span class="apidocSignatureSpan">yargs.</span>_runValidation
@@ -968,8 +969,8 @@ if (!yargs._hasOutput()) {
 
 // we apply validation post-hoc, so that custom
 // checks get passed populated positional arguments.
-if (!yargs._hasOutput()) yargs.<span class="apidocCodeKeywordSpan">_runValidation</span>(innerArgv, aliases, positionalMap, yarg\
-s.parsed.error)
+if (!yargs._hasOutput()) yargs.<span class="apidocCodeKeywordSpan">_runValidation</span>(innerArgv, aliases, positionalMap, yargs
+.parsed.error)
 
 if (commandHandler.handler &#x26;&#x26; !yargs._hasOutput()) {
   yargs._setHasOutput()
@@ -979,9 +980,9 @@ if (commandHandler.handler &#x26;&#x26; !yargs._hasOutput()) {
 if (command) currentContext.commands.pop()
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs._setHasOutput" id="apidoc.element.yargs._setHasOutput">
         function <span class="apidocSignatureSpan">yargs.</span>_setHasOutput
@@ -1007,9 +1008,9 @@ numFiles = currentContext.files.length - numFiles
 if (numFiles &#x3e; 0) currentContext.files.splice(numFiles * -1, numFiles)
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.addHelpOpt" id="apidoc.element.yargs.addHelpOpt">
         function <span class="apidocSignatureSpan">yargs.</span>addHelpOpt
@@ -1020,9 +1021,9 @@ if (numFiles &#x3e; 0) currentContext.files.splice(numFiles * -1, numFiles)
     <li>description and source-code<pre class="apidocCodePre">addHelpOpt = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.alias" id="apidoc.element.yargs.alias">
         function <span class="apidocSignatureSpan">yargs.</span>alias
@@ -1049,9 +1050,9 @@ function INFO()  { VERBOSE_LEVEL &#x3e;= 1 &#x26;&#x26; console.log.apply(consol
 function DEBUG() { VERBOSE_LEVEL &#x3e;= 2 &#x26;&#x26; console.log.apply(console, arguments); }
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.array" id="apidoc.element.yargs.array">
         function <span class="apidocSignatureSpan">yargs.</span>array
@@ -1078,9 +1079,9 @@ Tell the parser to interpret `key` as an array. If `.array(&#x27;foo&#x27;)` is 
 -------------
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.boolean" id="apidoc.element.yargs.boolean">
         function <span class="apidocSignatureSpan">yargs.</span>boolean
@@ -1107,9 +1108,9 @@ console.dir(argv._);
 ***
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.check" id="apidoc.element.yargs.check">
         function <span class="apidocSignatureSpan">yargs.</span>check
@@ -1136,9 +1137,9 @@ Check that certain conditions are met in the provided arguments.
 If `fn` throws or returns a non-truthy value, show the thrown error, usage information, and
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.choices" id="apidoc.element.yargs.choices">
         function <span class="apidocSignatureSpan">yargs.</span>choices
@@ -1165,9 +1166,9 @@ or as an individual value.
 var argv = require(&#x27;yargs&#x27;)
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.coerce" id="apidoc.element.yargs.coerce">
         function <span class="apidocSignatureSpan">yargs.</span>coerce
@@ -1194,9 +1195,9 @@ The coercion function should accept one argument, representing the parsed value
 from the command line, and should return a new value or throw an error. The
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.command" id="apidoc.element.yargs.command">
         function <span class="apidocSignatureSpan">yargs.</span>command
@@ -1223,9 +1224,9 @@ var argv = require(&#x27;yargs&#x27;)
 .alias(&#x27;h&#x27;, &#x27;help&#x27;)
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.commandDir" id="apidoc.element.yargs.commandDir">
         function <span class="apidocSignatureSpan">yargs.</span>commandDir
@@ -1252,9 +1253,9 @@ single directory and apply all of them at once instead of calling
 `.command(require(&#x27;./dir/module&#x27;))` multiple times.
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.completion" id="apidoc.element.yargs.completion">
         function <span class="apidocSignatureSpan">yargs.</span>completion
@@ -1281,9 +1282,9 @@ being outputted. To enable bash completions, concat the generated script to your
 `.bashrc` or `.bash_profile`.
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.config" id="apidoc.element.yargs.config">
         function <span class="apidocSignatureSpan">yargs.</span>config
@@ -1300,8 +1301,8 @@ being outputted. To enable bash completions, concat the generated script to your
   .argv;
 ```
 
-&#x3c;a name=&#x22;config&#x22;&#x3e;&#x3c;/a&#x3e;.<span class="apidocCodeKeywordSpan">config</span>([key], [description], [par\
-seFn])
+&#x3c;a name=&#x22;config&#x22;&#x3e;&#x3c;/a&#x3e;.<span class="apidocCodeKeywordSpan">config</span>([key], [description], [parseFn
+])
 -------------------------------------------------------------
 .config(object)
 ---------------
@@ -1311,9 +1312,9 @@ should be interpreted as a path to a JSON config file. The file is loaded
 and parsed, and its properties are set as arguments. Because the file is
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.conflicts" id="apidoc.element.yargs.conflicts">
         function <span class="apidocSignatureSpan">yargs.</span>conflicts
@@ -1328,7 +1329,7 @@ and parsed, and its properties are set as arguments. Because the file is
   &#x27;$0&#x27;: &#x27;test.js&#x27; }
 ```
 
-Note that a configuration object may extend from a JSON file using the `&#x22;extends&#x22;` property. When doing so, the `&#x22\
+Note that a configuration object may extend from a JSON file using the `&#x22;extends&#x22;` property. When doing so, the `&#x22
 ;extends&#x22;` value should be a path (relative or absolute) to the extended JSON file.
 
 &#x3c;a name=&#x22;conflicts&#x22;&#x3e;&#x3c;/a&#x3e;.<span class="apidocCodeKeywordSpan">conflicts</span>(x, y)
@@ -1341,9 +1342,9 @@ Optionally `.conflicts()` can accept an object specifying multiple conflicting k
 &#x3c;a name=&#x22;count&#x22;&#x3e;&#x3c;/a&#x3e;.count(key)
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.count" id="apidoc.element.yargs.count">
         function <span class="apidocSignatureSpan">yargs.</span>count
@@ -1370,9 +1371,9 @@ function WARN()  { VERBOSE_LEVEL &#x3e;= 0 &#x26;&#x26; console.log.apply(consol
 function INFO()  { VERBOSE_LEVEL &#x3e;= 1 &#x26;&#x26; console.log.apply(console, arguments); }
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.default" id="apidoc.element.yargs.default">
         function <span class="apidocSignatureSpan">yargs.</span>default
@@ -1399,9 +1400,9 @@ console.log(argv.x + argv.y);
 ***
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.defaults" id="apidoc.element.yargs.defaults">
         function <span class="apidocSignatureSpan">yargs.</span>defaults
@@ -1427,9 +1428,9 @@ removed in the next major version.
 Set `argv[key]` to `value` if no option was specified in `process.argv`.
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.demand" id="apidoc.element.yargs.demand">
         function <span class="apidocSignatureSpan">yargs.</span>demand
@@ -1446,8 +1447,8 @@ displaying the value in the usage instructions:
 .default(&#x27;timeout&#x27;, 60000, &#x27;(one-minute)&#x27;)
 ```
 
-&#x3c;a name=&#x22;demand&#x22;&#x3e;&#x3c;/a&#x3e;.<span class="apidocCodeKeywordSpan">demand</span>(count, [max], [msg]) [DEPR\
-ECATED]
+&#x3c;a name=&#x22;demand&#x22;&#x3e;&#x3c;/a&#x3e;.<span class="apidocCodeKeywordSpan">demand</span>(count, [max], [msg]) [DEPRECATED
+]
 --------------------
 
 `demand()` has been deprecated, please instead see [`demandOption()`](#demandOption) and
@@ -1457,9 +1458,9 @@ ECATED]
 ------------------------------
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.demandCommand" id="apidoc.element.yargs.demandCommand">
         function <span class="apidocSignatureSpan">yargs.</span>demandCommand
@@ -1486,9 +1487,9 @@ console.dir(argv);
 	$ ./demand_count.js a
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.demandOption" id="apidoc.element.yargs.demandOption">
         function <span class="apidocSignatureSpan">yargs.</span>demandOption
@@ -1514,9 +1515,9 @@ console.log(&#x22;The area is:&#x22;, argv.w * argv.h);
 ***
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.describe" id="apidoc.element.yargs.describe">
         function <span class="apidocSignatureSpan">yargs.</span>describe
@@ -1543,9 +1544,9 @@ var argv = require(&#x27;yargs&#x27;)
 var fs = require(&#x27;fs&#x27;);
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.detectLocale" id="apidoc.element.yargs.detectLocale">
         function <span class="apidocSignatureSpan">yargs.</span>detectLocale
@@ -1571,9 +1572,9 @@ Should yargs attempt to detect the os&#x27; locale? Defaults to `true`.
 --------------
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.env" id="apidoc.element.yargs.env">
         function <span class="apidocSignatureSpan">yargs.</span>env
@@ -1600,9 +1601,9 @@ Use the &#x22;__&#x22; separator in the environment variable to indicate nested 
 (e.g. prefix_nested__foo =&#x3e; nested.foo)
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.epilog" id="apidoc.element.yargs.epilog">
         function <span class="apidocSignatureSpan">yargs.</span>epilog
@@ -1629,9 +1630,9 @@ var lines = 0;
 s.on(&#x27;data&#x27;, function (buf) {
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.epilogue" id="apidoc.element.yargs.epilogue">
         function <span class="apidocSignatureSpan">yargs.</span>epilogue
@@ -1658,9 +1659,9 @@ var argv = require(&#x27;yargs&#x27;)
 .epilogue(&#x27;for more information, find our manual at http://example.com&#x27;);
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.example" id="apidoc.element.yargs.example">
         function <span class="apidocSignatureSpan">yargs.</span>example
@@ -1677,7 +1678,7 @@ line_count.js:
 var argv = require(&#x27;yargs&#x27;)
 .usage(&#x27;Usage: $0 &#x3c;command&#x3e; [options]&#x27;)
 .command(&#x27;count&#x27;, &#x27;Count the lines in a file&#x27;)
-.<span class="apidocCodeKeywordSpan">example</span>(&#x27;$0 count -f foo.js&#x27;, &#x27;count the lines in the given file&#x27\
+.<span class="apidocCodeKeywordSpan">example</span>(&#x27;$0 count -f foo.js&#x27;, &#x27;count the lines in the given file&#x27
 ;)
 .alias(&#x27;f&#x27;, &#x27;file&#x27;)
 .nargs(&#x27;f&#x27;, 1)
@@ -1688,9 +1689,9 @@ var argv = require(&#x27;yargs&#x27;)
 .epilog(&#x27;copyright 2015&#x27;)
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.exit" id="apidoc.element.yargs.exit">
         function <span class="apidocSignatureSpan">yargs.</span>exit
@@ -1716,9 +1717,9 @@ var argv = require(&#x27;yargs&#x27;)
 ---------------------------
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.exitProcess" id="apidoc.element.yargs.exitProcess">
         function <span class="apidocSignatureSpan">yargs.</span>exitProcess
@@ -1744,9 +1745,9 @@ By default, yargs exits the process when the user passes a help flag, uses the
 yargs have been validated.
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.fail" id="apidoc.element.yargs.fail">
         function <span class="apidocSignatureSpan">yargs.</span>fail
@@ -1772,9 +1773,9 @@ all other modifications, such as [`.normalize()`](#normalize).
 _Examples:_
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.getCommandInstance" id="apidoc.element.yargs.getCommandInstance">
         function <span class="apidocSignatureSpan">yargs.</span>getCommandInstance
@@ -1801,9 +1802,9 @@ Object.keys(aliases).forEach(function (key) {
   })
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.getCompletion" id="apidoc.element.yargs.getCompletion">
         function <span class="apidocSignatureSpan">yargs.</span>getCompletion
@@ -1830,9 +1831,9 @@ Allows to programmatically get completion choices for any line.
 `done`: The callback to be called with the resulting completions.
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.getContext" id="apidoc.element.yargs.getContext">
         function <span class="apidocSignatureSpan">yargs.</span>getContext
@@ -1859,9 +1860,9 @@ var innerYargs = null
 var positionalMap = {}
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.getDemandedCommands" id="apidoc.element.yargs.getDemandedCommands">
         function <span class="apidocSignatureSpan">yargs.</span>getDemandedCommands
@@ -1888,9 +1889,9 @@ var keys = Object.keys(
   .concat(Object.keys(options.default))
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.getDemandedOptions" id="apidoc.element.yargs.getDemandedOptions">
         function <span class="apidocSignatureSpan">yargs.</span>getDemandedOptions
@@ -1917,9 +1918,9 @@ var keys = Object.keys(
   .concat(Object.keys(demandedCommands))
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.getDetectLocale" id="apidoc.element.yargs.getDetectLocale">
         function <span class="apidocSignatureSpan">yargs.</span>getDetectLocale
@@ -1930,9 +1931,9 @@ var keys = Object.keys(
     <li>description and source-code<pre class="apidocCodePre">getDetectLocale = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.getExitProcess" id="apidoc.element.yargs.getExitProcess">
         function <span class="apidocSignatureSpan">yargs.</span>getExitProcess
@@ -1959,9 +1960,9 @@ if (!failureOutput) {
   if (failMessage) {
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.getGroups" id="apidoc.element.yargs.getGroups">
         function <span class="apidocSignatureSpan">yargs.</span>getGroups
@@ -1988,9 +1989,9 @@ var keys = Object.keys(
   .reduce(function (acc, key) {
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.getOptions" id="apidoc.element.yargs.getOptions">
         function <span class="apidocSignatureSpan">yargs.</span>getOptions
@@ -2017,9 +2018,9 @@ function postProcessPositional (yargs, argv, key) {
   }
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.getStrict" id="apidoc.element.yargs.getStrict">
         function <span class="apidocSignatureSpan">yargs.</span>getStrict
@@ -2030,9 +2031,9 @@ function postProcessPositional (yargs, argv, key) {
     <li>description and source-code<pre class="apidocCodePre">getStrict = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.getUsageInstance" id="apidoc.element.yargs.getUsageInstance">
         function <span class="apidocSignatureSpan">yargs.</span>getUsageInstance
@@ -2050,7 +2051,7 @@ innerYargs = commandHandler.builder(yargs.reset(parsed.aliases))
 // options object below.
 if (yargs.parsed === false) {
   if (typeof yargs.<span class="apidocCodeKeywordSpan">getUsageInstance</span>().getUsage() === &#x27;undefined&#x27;) {
-    yargs.usage(&#x27;$0 &#x27; + (parentCommands.length ? parentCommands.join(&#x27; &#x27;) + &#x27; &#x27; : &#x27;&#x27;) + \
+    yargs.usage(&#x27;$0 &#x27; + (parentCommands.length ? parentCommands.join(&#x27; &#x27;) + &#x27; &#x27; : &#x27;&#x27;) +
 commandHandler.original)
   }
   innerArgv = innerYargs ? innerYargs._parseArgs(null, null, true) : yargs._parseArgs(null, null, true)
@@ -2059,9 +2060,9 @@ commandHandler.original)
 }
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.getValidationInstance" id="apidoc.element.yargs.getValidationInstance">
         function <span class="apidocSignatureSpan">yargs.</span>getValidationInstance
@@ -2072,9 +2073,9 @@ commandHandler.original)
     <li>description and source-code<pre class="apidocCodePre">getValidationInstance = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.global" id="apidoc.element.yargs.global">
         function <span class="apidocSignatureSpan">yargs.</span>global
@@ -2101,9 +2102,9 @@ is executed, as an example:
 var argv = require(&#x27;yargs&#x27;)
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.group" id="apidoc.element.yargs.group">
         function <span class="apidocSignatureSpan">yargs.</span>group
@@ -2130,9 +2131,9 @@ when displaying usage instructions, e.g.,
 var yargs = require(&#x27;yargs&#x27;)([&#x27;--help&#x27;])
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.help" id="apidoc.element.yargs.help">
         function <span class="apidocSignatureSpan">yargs.</span>help
@@ -2158,9 +2159,9 @@ var fs = require(&#x27;fs&#x27;);
 var s = fs.createReadStream(argv.file);
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.implies" id="apidoc.element.yargs.implies">
         function <span class="apidocSignatureSpan">yargs.</span>implies
@@ -2187,9 +2188,9 @@ Optionally `.implies()` can accept an object specifying multiple implications.
 .locale()
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.locale" id="apidoc.element.yargs.locale">
         function <span class="apidocSignatureSpan">yargs.</span>locale
@@ -2215,9 +2216,9 @@ By default, yargs will auto-detect the operating system&#x27;s locale so that
 yargs-generated help content will display in the user&#x27;s language.
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.nargs" id="apidoc.element.yargs.nargs">
         function <span class="apidocSignatureSpan">yargs.</span>nargs
@@ -2243,9 +2244,9 @@ var argv = require(&#x27;yargs&#x27;)
 .argv;
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.normalize" id="apidoc.element.yargs.normalize">
         function <span class="apidocSignatureSpan">yargs.</span>normalize
@@ -2272,9 +2273,9 @@ var argv = require(&#x27;yargs&#x27;)
   return require(&#x27;fs&#x27;).readFileSync(arg, &#x27;utf8&#x27;)
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.number" id="apidoc.element.yargs.number">
         function <span class="apidocSignatureSpan">yargs.</span>number
@@ -2301,9 +2302,9 @@ If `key` is an array, all elements will be parsed as numbers.
 If the option is given on the command line without a value, `argv` will be
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.option" id="apidoc.element.yargs.option">
         function <span class="apidocSignatureSpan">yargs.</span>option
@@ -2329,9 +2330,9 @@ var argv = require(&#x27;yargs&#x27;)
 ```
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.options" id="apidoc.element.yargs.options">
         function <span class="apidocSignatureSpan">yargs.</span>options
@@ -2358,9 +2359,9 @@ require(&#x27;yargs&#x27;)
     alias: &#x27;r&#x27;,
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.parse" id="apidoc.element.yargs.parse">
         function <span class="apidocSignatureSpan">yargs.</span>parse
@@ -2386,9 +2387,9 @@ require(&#x27;yargs&#x27;).parse([ &#x27;-x&#x27;, &#x27;1&#x27;, &#x27;-y&#x27;
 The rest of these methods below come in just before the terminating `.argv`.
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.pkgConf" id="apidoc.element.yargs.pkgConf">
         function <span class="apidocSignatureSpan">yargs.</span>pkgConf
@@ -2403,8 +2404,8 @@ parser.parse(bot.userText, function (err, argv, output) {
 })
 ```
 
-***Note:*** Providing a callback to `parse()` disables the [`exitProcess` setting](#exitprocess) until after the callback is inv\
-oked.
+***Note:*** Providing a callback to `parse()` disables the [`exitProcess` setting](#exitprocess) until after the callback is invoked
+.
 
 .<span class="apidocCodeKeywordSpan">pkgConf</span>(key, [cwd])
 ------------
@@ -2416,9 +2417,9 @@ as a configuration object.
 from this location.
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.recommendCommands" id="apidoc.element.yargs.recommendCommands">
         function <span class="apidocSignatureSpan">yargs.</span>recommendCommands
@@ -2433,9 +2434,9 @@ as a configuration object.
 `cwd` can optionally be provided, the package.json will be read
 from this location.
 
-Note that a configuration stanza in package.json may extend from an identically keyed stanza in another package.json file using \
-the `&#x22;extends&#x22;` property. When doing so, the `&#x22;extends&#x22;` value should be a path (relative or absolute) to th\
-e extended package.json file.
+Note that a configuration stanza in package.json may extend from an identically keyed stanza in another package.json file using
+the `&#x22;extends&#x22;` property. When doing so, the `&#x22;extends&#x22;` value should be a path (relative or absolute) to the
+ extended package.json file.
 
 .<span class="apidocCodeKeywordSpan">recommendCommands</span>()
 ---------------------------
@@ -2447,9 +2448,9 @@ command is found?
 ------------------------------
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.require" id="apidoc.element.yargs.require">
         function <span class="apidocSignatureSpan">yargs.</span>require
@@ -2476,9 +2477,9 @@ An alias for [`demand()`](#demand). See docs there.
 &#x3c;a name=&#x22;requiresArg&#x22;&#x3e;&#x3c;/a&#x3e;.requiresArg(key)
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.required" id="apidoc.element.yargs.required">
         function <span class="apidocSignatureSpan">yargs.</span>required
@@ -2504,9 +2505,9 @@ An alias for [`demand()`](#demand). See docs there.
 -----------------
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.requiresArg" id="apidoc.element.yargs.requiresArg">
         function <span class="apidocSignatureSpan">yargs.</span>requiresArg
@@ -2533,9 +2534,9 @@ usage information and exit.
 The default behavior is to set the value of any key not followed by an
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.reset" id="apidoc.element.yargs.reset">
         function <span class="apidocSignatureSpan">yargs.</span>reset
@@ -2562,9 +2563,9 @@ to specify keys that should not be reset.
 ```js
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.resetOptions" id="apidoc.element.yargs.resetOptions">
         function <span class="apidocSignatureSpan">yargs.</span>resetOptions
@@ -2575,9 +2576,9 @@ to specify keys that should not be reset.
     <li>description and source-code<pre class="apidocCodePre">resetOptions = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.showCompletionScript" id="apidoc.element.yargs.showCompletionScript">
         function <span class="apidocSignatureSpan">yargs.</span>showCompletionScript
@@ -2604,9 +2605,9 @@ commands and options.
 .showHelp(consoleLevel=&#x27;error&#x27;)
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.showHelp" id="apidoc.element.yargs.showHelp">
         function <span class="apidocSignatureSpan">yargs.</span>showHelp
@@ -2633,9 +2634,9 @@ commands and options.
 Generate a bash completion script. Users of your application can install this
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.showHelpOnFail" id="apidoc.element.yargs.showHelpOnFail">
         function <span class="apidocSignatureSpan">yargs.</span>showHelpOnFail
@@ -2661,9 +2662,9 @@ the usage string is not output. If the `message` parameter is present, this
 message is output after the error message.
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.skipValidation" id="apidoc.element.yargs.skipValidation">
         function <span class="apidocSignatureSpan">yargs.</span>skipValidation
@@ -2690,9 +2691,9 @@ If any of the options is present, yargs validation is skipped.
 ---------
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.strict" id="apidoc.element.yargs.strict">
         function <span class="apidocSignatureSpan">yargs.</span>strict
@@ -2719,9 +2720,9 @@ corresponding description, will be reported as an error.
 at the top-level and for each sub-command.
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.string" id="apidoc.element.yargs.string">
         function <span class="apidocSignatureSpan">yargs.</span>string
@@ -2748,9 +2749,9 @@ Optionally `.options()` can take an object that maps keys to `opt` parameters.
 ````javascript
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.terminalWidth" id="apidoc.element.yargs.terminalWidth">
         function <span class="apidocSignatureSpan">yargs.</span>terminalWidth
@@ -2777,9 +2778,9 @@ stop parsing
 ------------
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.updateLocale" id="apidoc.element.yargs.updateLocale">
         function <span class="apidocSignatureSpan">yargs.</span>updateLocale
@@ -2805,9 +2806,9 @@ Override the default strings used by yargs with the key/value
 pairs provided in `obj`:
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.updateStrings" id="apidoc.element.yargs.updateStrings">
         function <span class="apidocSignatureSpan">yargs.</span>updateStrings
@@ -2834,9 +2835,9 @@ pairs provided in `obj`:
 var argv = require(&#x27;yargs&#x27;)
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.usage" id="apidoc.element.yargs.usage">
         function <span class="apidocSignatureSpan">yargs.</span>usage
@@ -2863,9 +2864,9 @@ console.log(&#x22;The area is:&#x22;, argv.w * argv.h);
 ***
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.version" id="apidoc.element.yargs.version">
         function <span class="apidocSignatureSpan">yargs.</span>version
@@ -2882,8 +2883,8 @@ present script similar to how `$0` works in bash or perl.
 
 `opts` is optional and acts like calling `.options(opts)`.
 
-&#x3c;a name=&#x22;version&#x22;&#x3e;&#x3c;/a&#x3e;.<span class="apidocCodeKeywordSpan">version</span>([option], [description],\
- [version])
+&#x3c;a name=&#x22;version&#x22;&#x3e;&#x3c;/a&#x3e;.<span class="apidocCodeKeywordSpan">version</span>([option], [description], [
+version])
 ----------------------------------------
 
 Add an option (e.g. `--version`) that displays the version number (given by the
@@ -2893,9 +2894,9 @@ If no arguments are passed to `version` (`.version()`), yargs will parse the `pa
 of your module and use its `version` value. The default value of `option` is `--version`.
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.wrap" id="apidoc.element.yargs.wrap">
         function <span class="apidocSignatureSpan">yargs.</span>wrap
@@ -2922,9 +2923,9 @@ Commands:
 start [app]              Start up an app            [aliases: run, up]
 ...</pre></li>
     </ul>
-    
-    
-    
+
+
+
     <h2>
         <a href="#apidoc.element.yargs.yerror" id="apidoc.element.yargs.yerror">
         function <span class="apidocSignatureSpan">yargs.</span>yerror
@@ -2939,18 +2940,18 @@ start [app]              Start up an app            [aliases: run, up]
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
 </div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.yargs.yerror" id="apidoc.module.yargs.yerror">module yargs.yerror</a></h1>
-    
-    
+
+
     <h2>
         <a href="#apidoc.element.yargs.yerror.yerror" id="apidoc.element.yargs.yerror.yerror">
         function <span class="apidocSignatureSpan">yargs.</span>yerror
@@ -2965,14 +2966,14 @@ start [app]              Start up an app            [aliases: run, up]
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
+
+
 </div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.yargs.yerror.prototype" id="apidoc.module.yargs.yerror.prototype">module yargs.yerror.prototype</a></h1>
-    
-    
+
+
     <h2>
         <a href="#apidoc.element.yargs.yerror.prototype.constructor" id="apidoc.element.yargs.yerror.prototype.constructor">
         function <span class="apidocSignatureSpan">yargs.yerror.prototype.</span>constructor
@@ -2987,8 +2988,8 @@ start [app]              Start up an app            [aliases: run, up]
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
-    
-    
+
+
 </div>
 
 <div class="apidocFooterDiv">
