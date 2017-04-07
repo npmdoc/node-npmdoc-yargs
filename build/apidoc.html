@@ -69,6 +69,15 @@
 
         <li>
 
+            <a class="apidocElementLiA" href="#apidoc.element.yargs.yargs">
+            function <span class="apidocSignatureSpan"></span>yargs
+            <span class="apidocSignatureSpan">(processArgs, cwd, parentRequire)</span>
+            </a>
+
+        </li>
+
+        <li>
+
             <a class="apidocElementLiA" href="#apidoc.element.yargs._getLoggerInstance">
             function <span class="apidocSignatureSpan">yargs.</span>_getLoggerInstance
             <span class="apidocSignatureSpan">()</span>
@@ -774,6 +783,28 @@
 
     </ol></li>
 
+    <li class="apidocModuleLi"><a href="#apidoc.module.yargs.yargs">module yargs.yargs</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.yargs.yargs.yargs">
+            function <span class="apidocSignatureSpan">yargs.</span>yargs
+            <span class="apidocSignatureSpan">(processArgs, cwd, parentRequire)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.yargs.yargs.rebase">
+            function <span class="apidocSignatureSpan">yargs.yargs.</span>rebase
+            <span class="apidocSignatureSpan">(base, dir)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
     <li class="apidocModuleLi"><a href="#apidoc.module.yargs.yerror">module yargs.yerror</a><ol>
 
         <li>
@@ -805,6 +836,154 @@
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.yargs" id="apidoc.module.yargs">module yargs</a></h1>
 
+
+
+
+    <h2>
+        <a href="#apidoc.element.yargs.yargs" id="apidoc.element.yargs.yargs">
+        function <span class="apidocSignatureSpan"></span>yargs
+        <span class="apidocSignatureSpan">(processArgs, cwd, parentRequire)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Yargs(processArgs, cwd, parentRequire) {
+  processArgs = processArgs || [] // handle calling yargs().
+
+  const self = {}
+  var command = null
+  var completion = null
+  var groups = {}
+  var output = &#x27;&#x27;
+  var preservedGroups = {}
+  var usage = null
+  var validation = null
+
+  const y18n = Y18n({
+    directory: path.resolve(__dirname, &#x27;./locales&#x27;),
+    updateFiles: false
+  })
+
+  if (!cwd) cwd = process.cwd()
+
+  self.$0 = process.argv
+    .slice(0, 2)
+    .map(function (x, i) {
+      // ignore the node bin, specify this in your
+      // bin file with #!/usr/bin/env node
+      if (i === 0 &#x26;&#x26; /\b(node|iojs)(\.exe)?$/.test(x)) return
+      var b = rebase(cwd, x)
+      return x.match(/^(\/|([a-zA-Z]:)?\\)/) &#x26;&#x26; b.length &#x3c; x.length ? b : x
+    })
+    .join(&#x27; &#x27;).trim()
+
+  if (process.env._ !== undefined &#x26;&#x26; process.argv[1] === process.env._) {
+    self.$0 = process.env._.replace(
+      path.dirname(process.execPath) + &#x27;/&#x27;, &#x27;&#x27;
+    )
+  }
+
+  // use context object to keep track of resets, subcommand execution, etc
+  // submodules should modify and check the state of context as necessary
+  const context = { resets: -1, commands: [], files: [] }
+  self.getContext = function () {
+    return context
+  }
+
+  // puts yargs back into an initial state. any keys
+  // that have been set to &#x22;global&#x22; will not be reset
+  // by this action.
+  var options
+  self.resetOptions = self.reset = function (aliases) {
+    context.resets++
+    aliases = aliases || {}
+    options = options || {}
+    // put yargs back into an initial state, this
+    // logic is used to build a nested command
+    // hierarchy.
+    var tmpOptions = {}
+    tmpOptions.local = options.local ? options.local : []
+    tmpOptions.configObjects = options.configObjects ? options.configObjects : []
+
+    // if a key has been explicitly set as local,
+    // we should reset it before passing options to command.
+    var localLookup = {}
+    tmpOptions.local.forEach(function (l) {
+      localLookup[l] = true
+      ;(aliases[l] || []).forEach(function (a) {
+        localLookup[a] = true
+      })
+    })
+
+    // preserve all groups not set to local.
+    preservedGroups = Object.keys(groups).reduce(function (acc, groupName) {
+      var keys = groups[groupName].filter(function (key) {
+        return !(key in localLookup)
+      })
+      if (keys.length &#x3e; 0) {
+        acc[groupName] = keys
+      }
+      return acc
+    }, {})
+    // groups can now be reset
+    groups = {}
+
+    var arrayOptions = [
+      &#x27;array&#x27;, &#x27;boolean&#x27;, &#x27;string&#x27;, &#x27;requiresArg&#x27;, &#x27;skipValidation&#x27;,
+      &#x27;count&#x27;, &#x27;normalize&#x27;, &#x27;number&#x27;
+    ]
+
+    var objectOptions = [
+      &#x27;narg&#x27;, &#x27;key&#x27;, &#x27;alias&#x27;, &#x27;default&#x27;, &#x27;defaultDescription&#x27;,
+      &#x27;config&#x27;, &#x27;choices&#x27;, &#x27;demandedOptions&#x27;, &#x27;demandedCommands&#x27;, &#x27;coerce&#x27;
+    ]
+
+    arrayOptions.forEach(function (k) {
+      tmpOptions[k] = (options[k] || []).filter(function (k) {
+        return !localLookup[k]
+      })
+    })
+
+    objectOptions.forEach(function (k) {
+      tmpOptions[k] = objFilter(options[k], function (k, v) {
+        return !localLookup[k]
+      })
+    })
+
+    tmpOptions.envPrefix = options.envPrefix
+    options = tmpOptions
+
+    // if this is the first time being executed, create
+    // instances of all our helpers -- otherwise just reset.
+    usage = usage ? usage.reset(localLookup) : Usage(self, y18n)
+    validation = validation ? validation.reset(localLookup) : Validation(self, usage, y18n)
+    command = command ? command.reset() : Command(self, usage, validation)
+    if (!completion) completion = Completion(self, usage, command)
+
+    if (!strictGlobal) strict = false
+    completionCommand = null
+    output = &#x27;&#x27;
+    exitError = null
+    hasOutput = false
+    self.parsed = false
+
+    return self
+  }
+  self.resetOptions()
+
+  // temporary hack: allow &#x22;freezing&#x22; of reset-able state for parse(msg, cb)
+  var frozen
+  function freeze () {
+    frozen = {}
+    frozen.options = options
+    frozen.configObjects = options.configObjects.slice(0)
+    frozen.exitProcess = exitProcess
+    frozen.groups = groups
+    usage.freeze()
+    validation.freeze()
+    command.freeze()
+    frozen.strict ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
 
 
 
@@ -2574,7 +2753,23 @@ to specify keys that should not be reset.
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">resetOptions = function () { [native code] }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  output = &#x27;&#x27;
+  exitError = null
+  hasOutput = false
+  self.parsed = false
+
+  return self
+}
+self.<span class="apidocCodeKeywordSpan">resetOptions</span>()
+
+// temporary hack: allow &#x22;freezing&#x22; of reset-able state for parse(msg, cb)
+var frozen
+function freeze () {
+  frozen = {}
+  frozen.options = options
+  frozen.configObjects = options.configObjects.slice(0)
+...</pre></li>
     </ul>
 
 
@@ -2944,6 +3139,174 @@ start [app]              Start up an app            [aliases: run, up]
 
 
 
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.yargs.yargs" id="apidoc.module.yargs.yargs">module yargs.yargs</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.yargs.yargs.yargs" id="apidoc.element.yargs.yargs.yargs">
+        function <span class="apidocSignatureSpan">yargs.</span>yargs
+        <span class="apidocSignatureSpan">(processArgs, cwd, parentRequire)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Yargs(processArgs, cwd, parentRequire) {
+  processArgs = processArgs || [] // handle calling yargs().
+
+  const self = {}
+  var command = null
+  var completion = null
+  var groups = {}
+  var output = &#x27;&#x27;
+  var preservedGroups = {}
+  var usage = null
+  var validation = null
+
+  const y18n = Y18n({
+    directory: path.resolve(__dirname, &#x27;./locales&#x27;),
+    updateFiles: false
+  })
+
+  if (!cwd) cwd = process.cwd()
+
+  self.$0 = process.argv
+    .slice(0, 2)
+    .map(function (x, i) {
+      // ignore the node bin, specify this in your
+      // bin file with #!/usr/bin/env node
+      if (i === 0 &#x26;&#x26; /\b(node|iojs)(\.exe)?$/.test(x)) return
+      var b = rebase(cwd, x)
+      return x.match(/^(\/|([a-zA-Z]:)?\\)/) &#x26;&#x26; b.length &#x3c; x.length ? b : x
+    })
+    .join(&#x27; &#x27;).trim()
+
+  if (process.env._ !== undefined &#x26;&#x26; process.argv[1] === process.env._) {
+    self.$0 = process.env._.replace(
+      path.dirname(process.execPath) + &#x27;/&#x27;, &#x27;&#x27;
+    )
+  }
+
+  // use context object to keep track of resets, subcommand execution, etc
+  // submodules should modify and check the state of context as necessary
+  const context = { resets: -1, commands: [], files: [] }
+  self.getContext = function () {
+    return context
+  }
+
+  // puts yargs back into an initial state. any keys
+  // that have been set to &#x22;global&#x22; will not be reset
+  // by this action.
+  var options
+  self.resetOptions = self.reset = function (aliases) {
+    context.resets++
+    aliases = aliases || {}
+    options = options || {}
+    // put yargs back into an initial state, this
+    // logic is used to build a nested command
+    // hierarchy.
+    var tmpOptions = {}
+    tmpOptions.local = options.local ? options.local : []
+    tmpOptions.configObjects = options.configObjects ? options.configObjects : []
+
+    // if a key has been explicitly set as local,
+    // we should reset it before passing options to command.
+    var localLookup = {}
+    tmpOptions.local.forEach(function (l) {
+      localLookup[l] = true
+      ;(aliases[l] || []).forEach(function (a) {
+        localLookup[a] = true
+      })
+    })
+
+    // preserve all groups not set to local.
+    preservedGroups = Object.keys(groups).reduce(function (acc, groupName) {
+      var keys = groups[groupName].filter(function (key) {
+        return !(key in localLookup)
+      })
+      if (keys.length &#x3e; 0) {
+        acc[groupName] = keys
+      }
+      return acc
+    }, {})
+    // groups can now be reset
+    groups = {}
+
+    var arrayOptions = [
+      &#x27;array&#x27;, &#x27;boolean&#x27;, &#x27;string&#x27;, &#x27;requiresArg&#x27;, &#x27;skipValidation&#x27;,
+      &#x27;count&#x27;, &#x27;normalize&#x27;, &#x27;number&#x27;
+    ]
+
+    var objectOptions = [
+      &#x27;narg&#x27;, &#x27;key&#x27;, &#x27;alias&#x27;, &#x27;default&#x27;, &#x27;defaultDescription&#x27;,
+      &#x27;config&#x27;, &#x27;choices&#x27;, &#x27;demandedOptions&#x27;, &#x27;demandedCommands&#x27;, &#x27;coerce&#x27;
+    ]
+
+    arrayOptions.forEach(function (k) {
+      tmpOptions[k] = (options[k] || []).filter(function (k) {
+        return !localLookup[k]
+      })
+    })
+
+    objectOptions.forEach(function (k) {
+      tmpOptions[k] = objFilter(options[k], function (k, v) {
+        return !localLookup[k]
+      })
+    })
+
+    tmpOptions.envPrefix = options.envPrefix
+    options = tmpOptions
+
+    // if this is the first time being executed, create
+    // instances of all our helpers -- otherwise just reset.
+    usage = usage ? usage.reset(localLookup) : Usage(self, y18n)
+    validation = validation ? validation.reset(localLookup) : Validation(self, usage, y18n)
+    command = command ? command.reset() : Command(self, usage, validation)
+    if (!completion) completion = Completion(self, usage, command)
+
+    if (!strictGlobal) strict = false
+    completionCommand = null
+    output = &#x27;&#x27;
+    exitError = null
+    hasOutput = false
+    self.parsed = false
+
+    return self
+  }
+  self.resetOptions()
+
+  // temporary hack: allow &#x22;freezing&#x22; of reset-able state for parse(msg, cb)
+  var frozen
+  function freeze () {
+    frozen = {}
+    frozen.options = options
+    frozen.configObjects = options.configObjects.slice(0)
+    frozen.exitProcess = exitProcess
+    frozen.groups = groups
+    usage.freeze()
+    validation.freeze()
+    command.freeze()
+    frozen.strict ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.yargs.yargs.rebase" id="apidoc.element.yargs.yargs.rebase">
+        function <span class="apidocSignatureSpan">yargs.yargs.</span>rebase
+        <span class="apidocSignatureSpan">(base, dir)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function rebase(base, dir) {
+  return path.relative(base, dir)
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
 
 
 </div>

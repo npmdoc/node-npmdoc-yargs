@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="http://yargs.js.org/"
-
-    >yargs (v7.0.2)</a>
+    <a href="http://yargs.js.org/">yargs (v7.0.2)</a>
 </h1>
 <h4>yargs the modern, pirate-themed, successor to optimist.</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.yargs">module yargs</a><ol>
 
@@ -853,13 +846,13 @@
   var command = null
   var completion = null
   var groups = {}
-  var output = &#x27;&#x27;
+  var output = ''
   var preservedGroups = {}
   var usage = null
   var validation = null
 
   const y18n = Y18n({
-    directory: path.resolve(__dirname, &#x27;./locales&#x27;),
+    directory: path.resolve(__dirname, './locales'),
     updateFiles: false
   })
 
@@ -870,15 +863,15 @@
     .map(function (x, i) {
       // ignore the node bin, specify this in your
       // bin file with #!/usr/bin/env node
-      if (i === 0 &#x26;&#x26; /\b(node|iojs)(\.exe)?$/.test(x)) return
+      if (i === 0 &amp;&amp; /\b(node|iojs)(\.exe)?$/.test(x)) return
       var b = rebase(cwd, x)
-      return x.match(/^(\/|([a-zA-Z]:)?\\)/) &#x26;&#x26; b.length &#x3c; x.length ? b : x
+      return x.match(/^(\/|([a-zA-Z]:)?\\)/) &amp;&amp; b.length &lt; x.length ? b : x
     })
-    .join(&#x27; &#x27;).trim()
+    .join(' ').trim()
 
-  if (process.env._ !== undefined &#x26;&#x26; process.argv[1] === process.env._) {
+  if (process.env._ !== undefined &amp;&amp; process.argv[1] === process.env._) {
     self.$0 = process.env._.replace(
-      path.dirname(process.execPath) + &#x27;/&#x27;, &#x27;&#x27;
+      path.dirname(process.execPath) + '/', ''
     )
   }
 
@@ -890,7 +883,7 @@
   }
 
   // puts yargs back into an initial state. any keys
-  // that have been set to &#x22;global&#x22; will not be reset
+  // that have been set to "global" will not be reset
   // by this action.
   var options
   self.resetOptions = self.reset = function (aliases) {
@@ -919,7 +912,7 @@
       var keys = groups[groupName].filter(function (key) {
         return !(key in localLookup)
       })
-      if (keys.length &#x3e; 0) {
+      if (keys.length &gt; 0) {
         acc[groupName] = keys
       }
       return acc
@@ -928,13 +921,13 @@
     groups = {}
 
     var arrayOptions = [
-      &#x27;array&#x27;, &#x27;boolean&#x27;, &#x27;string&#x27;, &#x27;requiresArg&#x27;, &#x27;skipValidation&#x27;,
-      &#x27;count&#x27;, &#x27;normalize&#x27;, &#x27;number&#x27;
+      'array', 'boolean', 'string', 'requiresArg', 'skipValidation',
+      'count', 'normalize', 'number'
     ]
 
     var objectOptions = [
-      &#x27;narg&#x27;, &#x27;key&#x27;, &#x27;alias&#x27;, &#x27;default&#x27;, &#x27;defaultDescription&#x27;,
-      &#x27;config&#x27;, &#x27;choices&#x27;, &#x27;demandedOptions&#x27;, &#x27;demandedCommands&#x27;, &#x27;coerce&#x27;
+      'narg', 'key', 'alias', 'default', 'defaultDescription',
+      'config', 'choices', 'demandedOptions', 'demandedCommands', 'coerce'
     ]
 
     arrayOptions.forEach(function (k) {
@@ -961,7 +954,7 @@
 
     if (!strictGlobal) strict = false
     completionCommand = null
-    output = &#x27;&#x27;
+    output = ''
     exitError = null
     hasOutput = false
     self.parsed = false
@@ -970,7 +963,7 @@
   }
   self.resetOptions()
 
-  // temporary hack: allow &#x22;freezing&#x22; of reset-able state for parse(msg, cb)
+  // temporary hack: allow "freezing" of reset-able state for parse(msg, cb)
   var frozen
   function freeze () {
     frozen = {}
@@ -1006,7 +999,7 @@ return self
 const logger = yargs.<span class="apidocCodeKeywordSpan">_getLoggerInstance</span>()
 
 if (fails.length) {
-  for (var i = fails.length - 1; i &#x3e;= 0; --i) {
+  for (var i = fails.length - 1; i &gt;= 0; --i) {
     fails[i](msg, err, self)
   }
 } else {
@@ -1028,17 +1021,17 @@ if (fails.length) {
 })
 
 Object.keys(argv).forEach(function (key) {
-  if (key !== &#x27;$0&#x27; &#x26;&#x26; key !== &#x27;_&#x27; &#x26;&#x26;
-    !descriptions.hasOwnProperty(key) &#x26;&#x26;
-    !demandedOptions.hasOwnProperty(key) &#x26;&#x26;
-    !positionalMap.hasOwnProperty(key) &#x26;&#x26;
-    !yargs.<span class="apidocCodeKeywordSpan">_getParseContext</span>().hasOwnProperty(key) &#x26;&#x26;
+  if (key !== '$0' &amp;&amp; key !== '_' &amp;&amp;
+    !descriptions.hasOwnProperty(key) &amp;&amp;
+    !demandedOptions.hasOwnProperty(key) &amp;&amp;
+    !positionalMap.hasOwnProperty(key) &amp;&amp;
+    !yargs.<span class="apidocCodeKeywordSpan">_getParseContext</span>().hasOwnProperty(key) &amp;&amp;
     !aliasLookup.hasOwnProperty(key)) {
     unknown.push(key)
   }
 })
 
-if (commandKeys.length &#x3e; 0) {
+if (commandKeys.length &gt; 0) {
   argv._.slice(currentContext.commands.length).forEach(function (key) {
 ...</pre></li>
     </ul>
@@ -1114,8 +1107,8 @@ if (!yargs._hasOutput()) yargs._runValidation(innerArgv, aliases, positionalMap,
   // original command string as usage() for consistent behavior with
   // options object below.
   if (yargs.parsed === false) {
-    if (typeof yargs.getUsageInstance().getUsage() === &#x27;undefined&#x27;) {
-      yargs.usage(&#x27;$0 &#x27; + (parentCommands.length ? parentCommands.join(&#x27; &#x27;) + &#x27; &#x27; : &#x27;&#x27;) +
+    if (typeof yargs.getUsageInstance().getUsage() === 'undefined') {
+      yargs.usage('$0 ' + (parentCommands.length ? parentCommands.join(' ') + ' ' : '') +
 commandHandler.original)
     }
     innerArgv = innerYargs ? innerYargs.<span class="apidocCodeKeywordSpan">_parseArgs</span>(null, null, true) : yargs._parseArgs
@@ -1124,9 +1117,9 @@ commandHandler.original)
     innerArgv = yargs.parsed.argv
   }
 
-  if (innerYargs &#x26;&#x26; yargs.parsed === false) aliases = innerYargs.parsed.aliases
+  if (innerYargs &amp;&amp; yargs.parsed === false) aliases = innerYargs.parsed.aliases
   else aliases = yargs.parsed.aliases
-} else if (typeof commandHandler.builder === &#x27;object&#x27;) {
+} else if (typeof commandHandler.builder === 'object') {
 ...</pre></li>
     </ul>
 
@@ -1151,7 +1144,7 @@ if (!yargs._hasOutput()) {
 if (!yargs._hasOutput()) yargs.<span class="apidocCodeKeywordSpan">_runValidation</span>(innerArgv, aliases, positionalMap, yargs
 .parsed.error)
 
-if (commandHandler.handler &#x26;&#x26; !yargs._hasOutput()) {
+if (commandHandler.handler &amp;&amp; !yargs._hasOutput()) {
   yargs._setHasOutput()
   commandHandler.handler(innerArgv)
 }
@@ -1177,14 +1170,14 @@ if (command) currentContext.commands.pop()
 // checks get passed populated positional arguments.
 if (!yargs._hasOutput()) yargs._runValidation(innerArgv, aliases, positionalMap, yargs.parsed.error)
 
-if (commandHandler.handler &#x26;&#x26; !yargs._hasOutput()) {
+if (commandHandler.handler &amp;&amp; !yargs._hasOutput()) {
   yargs.<span class="apidocCodeKeywordSpan">_setHasOutput</span>()
   commandHandler.handler(innerArgv)
 }
 
 if (command) currentContext.commands.pop()
 numFiles = currentContext.files.length - numFiles
-if (numFiles &#x3e; 0) currentContext.files.splice(numFiles * -1, numFiles)
+if (numFiles &gt; 0) currentContext.files.splice(numFiles * -1, numFiles)
 ...</pre></li>
     </ul>
 
@@ -1217,16 +1210,16 @@ count.js:
 
 ````javascript
 #!/usr/bin/env node
-var argv = require(&#x27;yargs&#x27;)
-    .count(&#x27;verbose&#x27;)
-    .<span class="apidocCodeKeywordSpan">alias</span>(&#x27;v&#x27;, &#x27;verbose&#x27;)
+var argv = require('yargs')
+    .count('verbose')
+    .<span class="apidocCodeKeywordSpan">alias</span>('v', 'verbose')
     .argv;
 
 VERBOSE_LEVEL = argv.verbose;
 
-function WARN()  { VERBOSE_LEVEL &#x3e;= 0 &#x26;&#x26; console.log.apply(console, arguments); }
-function INFO()  { VERBOSE_LEVEL &#x3e;= 1 &#x26;&#x26; console.log.apply(console, arguments); }
-function DEBUG() { VERBOSE_LEVEL &#x3e;= 2 &#x26;&#x26; console.log.apply(console, arguments); }
+function WARN()  { VERBOSE_LEVEL &gt;= 0 &amp;&amp; console.log.apply(console, arguments); }
+function INFO()  { VERBOSE_LEVEL &gt;= 1 &amp;&amp; console.log.apply(console, arguments); }
+function DEBUG() { VERBOSE_LEVEL &gt;= 2 &amp;&amp; console.log.apply(console, arguments); }
 ...</pre></li>
     </ul>
 
@@ -1243,18 +1236,18 @@ function DEBUG() { VERBOSE_LEVEL &#x3e;= 2 &#x26;&#x26; console.log.apply(consol
     <li>example usage<pre class="apidocCodePre">...
 works in bash or perl.
 
-If `yargs` is executed in an environment that embeds node and there&#x27;s no script name (e.g.
+If `yargs` is executed in an environment that embeds node and there's no script name (e.g.
 [Electron](http://electron.atom.io/) or [nw.js](http://nwjs.io/)), it will ignore the first parameter since it
 expects it to be the script name. In order to override this behavior, use `.parse(process.argv.slice(1))`
-instead of `.argv` and the first parameter won&#x27;t be ignored.
+instead of `.argv` and the first parameter won't be ignored.
 
-&#x3c;a name=&#x22;array&#x22;&#x3e;&#x3c;/a&#x3e;.<span class="apidocCodeKeywordSpan">array</span>(key)
+&lt;a name="array"&gt;&lt;/a&gt;.<span class="apidocCodeKeywordSpan">array</span>(key)
 ----------
 
-Tell the parser to interpret `key` as an array. If `.array(&#x27;foo&#x27;)` is set,
-`--foo foo bar` will be parsed as `[&#x27;foo&#x27;, &#x27;bar&#x27;]` rather than as `&#x27;foo&#x27;`.
+Tell the parser to interpret `key` as an array. If `.array('foo')` is set,
+`--foo foo bar` will be parsed as `['foo', 'bar']` rather than as `'foo'`.
 
-&#x3c;a name=&#x22;boolean&#x22;&#x3e;&#x3c;/a&#x3e;.boolean(key)
+&lt;a name="boolean"&gt;&lt;/a&gt;.boolean(key)
 -------------
 ...</pre></li>
     </ul>
@@ -1276,8 +1269,8 @@ boolean_single.js:
 
 ````javascript
 #!/usr/bin/env node
-var argv = require(&#x27;yargs&#x27;)
-    .<span class="apidocCodeKeywordSpan">boolean</span>(&#x27;v&#x27;)
+var argv = require('yargs')
+    .<span class="apidocCodeKeywordSpan">boolean</span>('v')
     .argv
 ;
 console.dir(argv.v);
@@ -1299,7 +1292,7 @@ console.dir(argv._);
     <ul>
     <li>description and source-code<pre class="apidocCodePre">check = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-`process.argv`, that string won&#x27;t get set as the value of `key`.
+`process.argv`, that string won't get set as the value of `key`.
 
 `key` will default to `false`, unless a `default(key, undefined)` is
 explicitly set.
@@ -1335,14 +1328,14 @@ exit.
 `global` indicates whether `check()` should be enabled both
 at the top-level and for each sub-command.
 
-&#x3c;a name=&#x22;choices&#x22;&#x3e;&#x3c;/a&#x3e;.<span class="apidocCodeKeywordSpan">choices</span>(key, choices)
+&lt;a name="choices"&gt;&lt;/a&gt;.<span class="apidocCodeKeywordSpan">choices</span>(key, choices)
 ----------------------
 
 Limit valid values for `key` to a predefined set of `choices`, given as an array
 or as an individual value.
 
 ```js
-var argv = require(&#x27;yargs&#x27;)
+var argv = require('yargs')
 ...</pre></li>
     </ul>
 
@@ -1357,14 +1350,14 @@ var argv = require(&#x27;yargs&#x27;)
     <ul>
     <li>description and source-code<pre class="apidocCodePre">coerce = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    alias: &#x27;s&#x27;,
-    describe: &#x27;choose a size&#x27;,
-    choices: [&#x27;xs&#x27;, &#x27;s&#x27;, &#x27;m&#x27;, &#x27;l&#x27;, &#x27;xl&#x27;]
+    alias: 's',
+    describe: 'choose a size',
+    choices: ['xs', 's', 'm', 'l', 'xl']
   })
   .argv
 ```
 
-&#x3c;a name=&#x22;coerce&#x22;&#x3e;&#x3c;/a&#x3e;.<span class="apidocCodeKeywordSpan">coerce</span>(key, fn)
+&lt;a name="coerce"&gt;&lt;/a&gt;.<span class="apidocCodeKeywordSpan">coerce</span>(key, fn)
 ----------------
 
 Provide a synchronous function to coerce or transform the value(s) given on the
@@ -1391,16 +1384,16 @@ line_count.js:
 
 ````javascript
 #!/usr/bin/env node
-var argv = require(&#x27;yargs&#x27;)
-.usage(&#x27;Usage: $0 &#x3c;command&#x3e; [options]&#x27;)
-.<span class="apidocCodeKeywordSpan">command</span>(&#x27;count&#x27;, &#x27;Count the lines in a file&#x27;)
-.example(&#x27;$0 count -f foo.js&#x27;, &#x27;count the lines in the given file&#x27;)
-.alias(&#x27;f&#x27;, &#x27;file&#x27;)
-.nargs(&#x27;f&#x27;, 1)
-.describe(&#x27;f&#x27;, &#x27;Load a file&#x27;)
-.demandOption([&#x27;f&#x27;])
-.help(&#x27;h&#x27;)
-.alias(&#x27;h&#x27;, &#x27;help&#x27;)
+var argv = require('yargs')
+.usage('Usage: $0 &lt;command&gt; [options]')
+.<span class="apidocCodeKeywordSpan">command</span>('count', 'Count the lines in a file')
+.example('$0 count -f foo.js', 'count the lines in the given file')
+.alias('f', 'file')
+.nargs('f', 1)
+.describe('f', 'Load a file')
+.demandOption(['f'])
+.help('h')
+.alias('h', 'help')
 ...</pre></li>
     </ul>
 
@@ -1417,7 +1410,7 @@ var argv = require(&#x27;yargs&#x27;)
     <li>example usage<pre class="apidocCodePre">...
 
 ```js
-yargs.command(&#x27;get &#x3c;source&#x3e; [proxy]&#x27;, &#x27;make a get HTTP request&#x27;, require(&#x27;my-module&#x27;))
+yargs.command('get &lt;source&gt; [proxy]', 'make a get HTTP request', require('my-module'))
   .help()
   .argv
 ```
@@ -1429,7 +1422,7 @@ Apply command modules from a directory relative to the module calling this metho
 
 This allows you to organize multiple commands into their own modules under a
 single directory and apply all of them at once instead of calling
-`.command(require(&#x27;./dir/module&#x27;))` multiple times.
+`.command(require('./dir/module'))` multiple times.
 ...</pre></li>
     </ul>
 
@@ -1444,10 +1437,10 @@ single directory and apply all of them at once instead of calling
     <ul>
     <li>description and source-code<pre class="apidocCodePre">completion = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-exports.desc = &#x27;Delete tracked branches gone stale for remotes&#x27;
+exports.desc = 'Delete tracked branches gone stale for remotes'
 exports.builder = {}
 exports.handler = function (argv) {
-  console.log(&#x27;pruning remotes %s&#x27;, [].concat(argv.name).concat(argv.names).join(&#x27;, &#x27;))
+  console.log('pruning remotes %s', [].concat(argv.name).concat(argv.names).join(', '))
 }
 ```
 
@@ -1473,14 +1466,14 @@ being outputted. To enable bash completions, concat the generated script to your
     <ul>
     <li>description and source-code<pre class="apidocCodePre">config = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-        resolve([&#x27;apple&#x27;, &#x27;banana&#x27;])
+        resolve(['apple', 'banana'])
       }, 10)
     })
   })
   .argv;
 ```
 
-&#x3c;a name=&#x22;config&#x22;&#x3e;&#x3c;/a&#x3e;.<span class="apidocCodeKeywordSpan">config</span>([key], [description], [parseFn
+&lt;a name="config"&gt;&lt;/a&gt;.<span class="apidocCodeKeywordSpan">config</span>([key], [description], [parseFn
 ])
 -------------------------------------------------------------
 .config(object)
@@ -1505,20 +1498,20 @@ and parsed, and its properties are set as arguments. Because the file is
     <li>example usage<pre class="apidocCodePre">...
   foo: 1,
   bar: 2,
-  &#x27;$0&#x27;: &#x27;test.js&#x27; }
+  '$0': 'test.js' }
 ```
 
-Note that a configuration object may extend from a JSON file using the `&#x22;extends&#x22;` property. When doing so, the `&#x22
-;extends&#x22;` value should be a path (relative or absolute) to the extended JSON file.
+Note that a configuration object may extend from a JSON file using the `"extends"` property. When doing so, the `"
+;extends"` value should be a path (relative or absolute) to the extended JSON file.
 
-&#x3c;a name=&#x22;conflicts&#x22;&#x3e;&#x3c;/a&#x3e;.<span class="apidocCodeKeywordSpan">conflicts</span>(x, y)
+&lt;a name="conflicts"&gt;&lt;/a&gt;.<span class="apidocCodeKeywordSpan">conflicts</span>(x, y)
 ----------------------------------------------
 
 Given the key `x` is set, the key `y` must not be set.
 
 Optionally `.conflicts()` can accept an object specifying multiple conflicting keys.
 
-&#x3c;a name=&#x22;count&#x22;&#x3e;&#x3c;/a&#x3e;.count(key)
+&lt;a name="count"&gt;&lt;/a&gt;.count(key)
 ...</pre></li>
     </ul>
 
@@ -1539,15 +1532,15 @@ count.js:
 
 ````javascript
 #!/usr/bin/env node
-var argv = require(&#x27;yargs&#x27;)
-    .<span class="apidocCodeKeywordSpan">count</span>(&#x27;verbose&#x27;)
-    .alias(&#x27;v&#x27;, &#x27;verbose&#x27;)
+var argv = require('yargs')
+    .<span class="apidocCodeKeywordSpan">count</span>('verbose')
+    .alias('v', 'verbose')
     .argv;
 
 VERBOSE_LEVEL = argv.verbose;
 
-function WARN()  { VERBOSE_LEVEL &#x3e;= 0 &#x26;&#x26; console.log.apply(console, arguments); }
-function INFO()  { VERBOSE_LEVEL &#x3e;= 1 &#x26;&#x26; console.log.apply(console, arguments); }
+function WARN()  { VERBOSE_LEVEL &gt;= 0 &amp;&amp; console.log.apply(console, arguments); }
+function INFO()  { VERBOSE_LEVEL &gt;= 1 &amp;&amp; console.log.apply(console, arguments); }
 ...</pre></li>
     </ul>
 
@@ -1568,9 +1561,9 @@ default_singles.js:
 
 ````javascript
 #!/usr/bin/env node
-var argv = require(&#x27;yargs&#x27;)
-    .<span class="apidocCodeKeywordSpan">default</span>(&#x27;x&#x27;, 10)
-    .default(&#x27;y&#x27;, 10)
+var argv = require('yargs')
+    .<span class="apidocCodeKeywordSpan">default</span>('x', 10)
+    .default('y', 10)
     .argv
 ;
 console.log(argv.x + argv.y);
@@ -1596,7 +1589,7 @@ console.log(argv.x + argv.y);
 Interpret `key` as a boolean flag, but set its parsed value to the number of
 flag occurrences rather than `true` or `false`. Default value is thus `0`.
 
-&#x3c;a name=&#x22;default&#x22;&#x3e;&#x3c;/a&#x3e;.default(key, value, [description])
+&lt;a name="default"&gt;&lt;/a&gt;.default(key, value, [description])
 ---------------------------------------------------------
 .<span class="apidocCodeKeywordSpan">defaults</span>(key, value, [description])
 ------------------------------------
@@ -1623,17 +1616,17 @@ Optionally, `description` can also be provided and will take precedence over
 displaying the value in the usage instructions:
 
 ```js
-.default(&#x27;timeout&#x27;, 60000, &#x27;(one-minute)&#x27;)
+.default('timeout', 60000, '(one-minute)')
 ```
 
-&#x3c;a name=&#x22;demand&#x22;&#x3e;&#x3c;/a&#x3e;.<span class="apidocCodeKeywordSpan">demand</span>(count, [max], [msg]) [DEPRECATED
+&lt;a name="demand"&gt;&lt;/a&gt;.<span class="apidocCodeKeywordSpan">demand</span>(count, [max], [msg]) [DEPRECATED
 ]
 --------------------
 
 `demand()` has been deprecated, please instead see [`demandOption()`](#demandOption) and
 [`demandCommand()`](#demandCommand).
 
-&#x3c;a name=&#x22;demandOption&#x22;&#x3e;&#x3c;/a&#x3e;.demandOption(key, [msg | boolean])
+&lt;a name="demandOption"&gt;&lt;/a&gt;.demandOption(key, [msg | boolean])
 ------------------------------
 ...</pre></li>
     </ul>
@@ -1655,7 +1648,7 @@ demand_count.js:
 
 ````javascript
 #!/usr/bin/env node
-var argv = require(&#x27;yargs&#x27;)
+var argv = require('yargs')
     .<span class="apidocCodeKeywordSpan">demandCommand</span>(2)
     .argv;
 console.dir(argv);
@@ -1683,12 +1676,12 @@ area.js:
 
 ````javascript
 #!/usr/bin/env node
-var argv = require(&#x27;yargs&#x27;)
-    .usage(&#x27;Usage: $0 -w [num] -h [num]&#x27;)
-    .<span class="apidocCodeKeywordSpan">demandOption</span>([&#x27;w&#x27;,&#x27;h&#x27;])
+var argv = require('yargs')
+    .usage('Usage: $0 -w [num] -h [num]')
+    .<span class="apidocCodeKeywordSpan">demandOption</span>(['w','h'])
     .argv;
 
-console.log(&#x22;The area is:&#x22;, argv.w * argv.h);
+console.log("The area is:", argv.w * argv.h);
 ````
 
 ***
@@ -1707,20 +1700,20 @@ console.log(&#x22;The area is:&#x22;, argv.w * argv.h);
     <li>description and source-code<pre class="apidocCodePre">describe = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 #!/usr/bin/env node
-var argv = require(&#x27;yargs&#x27;)
-    .usage(&#x27;Usage: $0 &#x3c;command&#x3e; [options]&#x27;)
-    .command(&#x27;count&#x27;, &#x27;Count the lines in a file&#x27;)
-    .example(&#x27;$0 count -f foo.js&#x27;, &#x27;count the lines in the given file&#x27;)
-    .alias(&#x27;f&#x27;, &#x27;file&#x27;)
-    .nargs(&#x27;f&#x27;, 1)
-    .<span class="apidocCodeKeywordSpan">describe</span>(&#x27;f&#x27;, &#x27;Load a file&#x27;)
-    .demandOption([&#x27;f&#x27;])
-    .help(&#x27;h&#x27;)
-    .alias(&#x27;h&#x27;, &#x27;help&#x27;)
-    .epilog(&#x27;copyright 2015&#x27;)
+var argv = require('yargs')
+    .usage('Usage: $0 &lt;command&gt; [options]')
+    .command('count', 'Count the lines in a file')
+    .example('$0 count -f foo.js', 'count the lines in the given file')
+    .alias('f', 'file')
+    .nargs('f', 1)
+    .<span class="apidocCodeKeywordSpan">describe</span>('f', 'Load a file')
+    .demandOption(['f'])
+    .help('h')
+    .alias('h', 'help')
+    .epilog('copyright 2015')
     .argv;
 
-var fs = require(&#x27;fs&#x27;);
+var fs = require('fs');
 ...</pre></li>
     </ul>
 
@@ -1735,7 +1728,7 @@ var fs = require(&#x27;fs&#x27;);
     <ul>
     <li>description and source-code<pre class="apidocCodePre">detectLocale = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-&#x3c;a name=&#x22;describe&#x22;&#x3e;&#x3c;/a&#x3e;.describe(key, desc)
+&lt;a name="describe"&gt;&lt;/a&gt;.describe(key, desc)
 --------------------
 
 Describe a `key` for the generated usage information.
@@ -1745,7 +1738,7 @@ Optionally `.describe()` can take an object that maps keys to descriptions.
 .<span class="apidocCodeKeywordSpan">detectLocale</span>(boolean)
 -----------
 
-Should yargs attempt to detect the os&#x27; locale? Defaults to `true`.
+Should yargs attempt to detect the os' locale? Defaults to `true`.
 
 .env([prefix])
 --------------
@@ -1768,7 +1761,7 @@ Optionally `.describe()` can take an object that maps keys to descriptions.
 .detectLocale(boolean)
 -----------
 
-Should yargs attempt to detect the os&#x27; locale? Defaults to `true`.
+Should yargs attempt to detect the os' locale? Defaults to `true`.
 
 .<span class="apidocCodeKeywordSpan">env</span>([prefix])
 --------------
@@ -1776,8 +1769,8 @@ Should yargs attempt to detect the os&#x27; locale? Defaults to `true`.
 Tell yargs to parse environment variables matching the given prefix and apply
 them to argv as though they were command line arguments.
 
-Use the &#x22;__&#x22; separator in the environment variable to indicate nested options.
-(e.g. prefix_nested__foo =&#x3e; nested.foo)
+Use the "__" separator in the environment variable to indicate nested options.
+(e.g. prefix_nested__foo =&gt; nested.foo)
 ...</pre></li>
     </ul>
 
@@ -1792,21 +1785,21 @@ Use the &#x22;__&#x22; separator in the environment variable to indicate nested 
     <ul>
     <li>description and source-code<pre class="apidocCodePre">epilog = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    .example(&#x27;$0 count -f foo.js&#x27;, &#x27;count the lines in the given file&#x27;)
-    .alias(&#x27;f&#x27;, &#x27;file&#x27;)
-    .nargs(&#x27;f&#x27;, 1)
-    .describe(&#x27;f&#x27;, &#x27;Load a file&#x27;)
-    .demandOption([&#x27;f&#x27;])
-    .help(&#x27;h&#x27;)
-    .alias(&#x27;h&#x27;, &#x27;help&#x27;)
-    .<span class="apidocCodeKeywordSpan">epilog</span>(&#x27;copyright 2015&#x27;)
+    .example('$0 count -f foo.js', 'count the lines in the given file')
+    .alias('f', 'file')
+    .nargs('f', 1)
+    .describe('f', 'Load a file')
+    .demandOption(['f'])
+    .help('h')
+    .alias('h', 'help')
+    .<span class="apidocCodeKeywordSpan">epilog</span>('copyright 2015')
     .argv;
 
-var fs = require(&#x27;fs&#x27;);
+var fs = require('fs');
 var s = fs.createReadStream(argv.file);
 
 var lines = 0;
-s.on(&#x27;data&#x27;, function (buf) {
+s.on('data', function (buf) {
 ...</pre></li>
     </ul>
 
@@ -1834,8 +1827,8 @@ by calling `.env(false)`, e.g. if you need to undo previous configuration.
 A message to print at the end of the usage instructions, e.g.
 
 ```js
-var argv = require(&#x27;yargs&#x27;)
-.epilogue(&#x27;for more information, find our manual at http://example.com&#x27;);
+var argv = require('yargs')
+.epilogue('for more information, find our manual at http://example.com');
 ...</pre></li>
     </ul>
 
@@ -1854,18 +1847,18 @@ line_count.js:
 
 ````javascript
 #!/usr/bin/env node
-var argv = require(&#x27;yargs&#x27;)
-.usage(&#x27;Usage: $0 &#x3c;command&#x3e; [options]&#x27;)
-.command(&#x27;count&#x27;, &#x27;Count the lines in a file&#x27;)
-.<span class="apidocCodeKeywordSpan">example</span>(&#x27;$0 count -f foo.js&#x27;, &#x27;count the lines in the given file&#x27
+var argv = require('yargs')
+.usage('Usage: $0 &lt;command&gt; [options]')
+.command('count', 'Count the lines in a file')
+.<span class="apidocCodeKeywordSpan">example</span>('$0 count -f foo.js', 'count the lines in the given file'
 ;)
-.alias(&#x27;f&#x27;, &#x27;file&#x27;)
-.nargs(&#x27;f&#x27;, 1)
-.describe(&#x27;f&#x27;, &#x27;Load a file&#x27;)
-.demandOption([&#x27;f&#x27;])
-.help(&#x27;h&#x27;)
-.alias(&#x27;h&#x27;, &#x27;help&#x27;)
-.epilog(&#x27;copyright 2015&#x27;)
+.alias('f', 'file')
+.nargs('f', 1)
+.describe('f', 'Load a file')
+.demandOption(['f'])
+.help('h')
+.alias('h', 'help')
+.epilog('copyright 2015')
 ...</pre></li>
     </ul>
 
@@ -1881,12 +1874,12 @@ var argv = require(&#x27;yargs&#x27;)
     <li>description and source-code<pre class="apidocCodePre">exit = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```js
-var argv = require(&#x27;yargs&#x27;)
+var argv = require('yargs')
   .fail(function (msg, err, yargs) {
     if (err) throw err // preserve stack
-    console.error(&#x27;You broke it!&#x27;)
+    console.error('You broke it!')
     console.error(msg)
-    console.error(&#x27;You should be doing&#x27;, yargs.help())
+    console.error('You should be doing', yargs.help())
     process.<span class="apidocCodeKeywordSpan">exit</span>(1)
   })
   .argv
@@ -1915,7 +1908,7 @@ Give some example invocations of your program. Inside `cmd`, the string
 present script similar to how `$0` works in bash or perl.
 Examples will be printed out as part of the help message.
 
-&#x3c;a name=&#x22;exitprocess&#x22;&#x3e;&#x3c;/a&#x3e;.<span class="apidocCodeKeywordSpan">exitProcess</span>(enable)
+&lt;a name="exitprocess"&gt;&lt;/a&gt;.<span class="apidocCodeKeywordSpan">exitProcess</span>(enable)
 ----------------------------------
 
 By default, yargs exits the process when the user passes a help flag, uses the
@@ -1994,7 +1987,7 @@ Object.keys(aliases).forEach(function (key) {
     <li>description and source-code<pre class="apidocCodePre">getCompletion = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
     console.error(msg)
-    console.error(&#x27;You should be doing&#x27;, yargs.help())
+    console.error('You should be doing', yargs.help())
     process.exit(1)
   })
   .argv
@@ -2052,7 +2045,7 @@ var positionalMap = {}
     <li>description and source-code<pre class="apidocCodePre">getDemandedCommands = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
-  var defaultGroup = &#x27;Options:&#x27;
+  var defaultGroup = 'Options:'
   self.help = function () {
 normalizeAliases()
 
@@ -2082,7 +2075,7 @@ var keys = Object.keys(
     <li>example usage<pre class="apidocCodePre">...
   }
 
-  var defaultGroup = &#x27;Options:&#x27;
+  var defaultGroup = 'Options:'
   self.help = function () {
 normalizeAliases()
 
@@ -2125,16 +2118,16 @@ var keys = Object.keys(
     const logger = yargs._getLoggerInstance()
 
     if (fails.length) {
-for (var i = fails.length - 1; i &#x3e;= 0; --i) {
+for (var i = fails.length - 1; i &gt;= 0; --i) {
   fails[i](msg, err, self)
 }
     } else {
 if (yargs.<span class="apidocCodeKeywordSpan">getExitProcess</span>()) setBlocking(true)
 
-// don&#x27;t output failure message more than once
+// don't output failure message more than once
 if (!failureOutput) {
   failureOutput = true
-  if (showHelpOnFail) yargs.showHelp(&#x27;error&#x27;)
+  if (showHelpOnFail) yargs.showHelp('error')
   if (msg) logger.error(msg)
   if (failMessage) {
 ...</pre></li>
@@ -2151,7 +2144,7 @@ if (!failureOutput) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">getGroups = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  var defaultGroup = &#x27;Options:&#x27;
+  var defaultGroup = 'Options:'
   self.help = function () {
 normalizeAliases()
 
@@ -2188,7 +2181,7 @@ var keys = Object.keys(
 // TODO move positional arg logic to yargs-parser and remove this duplication
 function postProcessPositional (yargs, argv, key) {
   var coerce = yargs.<span class="apidocCodeKeywordSpan">getOptions</span>().coerce[key]
-  if (typeof coerce === &#x27;function&#x27;) {
+  if (typeof coerce === 'function') {
     try {
       argv[key] = coerce(argv[key])
     } catch (err) {
@@ -2229,8 +2222,8 @@ innerYargs = commandHandler.builder(yargs.reset(parsed.aliases))
 // original command string as usage() for consistent behavior with
 // options object below.
 if (yargs.parsed === false) {
-  if (typeof yargs.<span class="apidocCodeKeywordSpan">getUsageInstance</span>().getUsage() === &#x27;undefined&#x27;) {
-    yargs.usage(&#x27;$0 &#x27; + (parentCommands.length ? parentCommands.join(&#x27; &#x27;) + &#x27; &#x27; : &#x27;&#x27;) +
+  if (typeof yargs.<span class="apidocCodeKeywordSpan">getUsageInstance</span>().getUsage() === 'undefined') {
+    yargs.usage('$0 ' + (parentCommands.length ? parentCommands.join(' ') + ' ' : '') +
 commandHandler.original)
   }
   innerArgv = innerYargs ? innerYargs._parseArgs(null, null, true) : yargs._parseArgs(null, null, true)
@@ -2264,21 +2257,21 @@ commandHandler.original)
     <ul>
     <li>description and source-code<pre class="apidocCodePre">global = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  .getCompletion([&#x27;./test.js&#x27;, &#x27;--foo&#x27;], function (completions) {
+  .getCompletion(['./test.js', '--foo'], function (completions) {
     console.log(completions)
   })
 ```
 
-Outputs the same completion choices as `./test.js --foo`&#x3c;kbd&#x3e;TAB&#x3c;/kbd&#x3e;: `--foobar` and `--foobaz`
+Outputs the same completion choices as `./test.js --foo`&lt;kbd&gt;TAB&lt;/kbd&gt;: `--foobar` and `--foobaz`
 
-&#x3c;a name=&#x22;global&#x22;&#x3e;&#x3c;/a&#x3e;.<span class="apidocCodeKeywordSpan">global</span>(globals, [global=true])
+&lt;a name="global"&gt;&lt;/a&gt;.<span class="apidocCodeKeywordSpan">global</span>(globals, [global=true])
 ------------
 
 Indicate that an option (or group of options) should not be reset when a command
 is executed, as an example:
 
 ```js
-var argv = require(&#x27;yargs&#x27;)
+var argv = require('yargs')
 ...</pre></li>
     </ul>
 
@@ -2300,14 +2293,14 @@ option will have been eliminated.
 
 Options default to being global.
 
-&#x3c;a name=&#x22;group&#x22;&#x3e;&#x3c;/a&#x3e;.<span class="apidocCodeKeywordSpan">group</span>(key(s), groupName)
+&lt;a name="group"&gt;&lt;/a&gt;.<span class="apidocCodeKeywordSpan">group</span>(key(s), groupName)
 --------------------
 
 Given a key, or an array of keys, places options under an alternative heading
 when displaying usage instructions, e.g.,
 
 ```js
-var yargs = require(&#x27;yargs&#x27;)([&#x27;--help&#x27;])
+var yargs = require('yargs')(['--help'])
 ...</pre></li>
     </ul>
 
@@ -2322,19 +2315,19 @@ var yargs = require(&#x27;yargs&#x27;)([&#x27;--help&#x27;])
     <ul>
     <li>description and source-code<pre class="apidocCodePre">help = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    .usage(&#x27;Usage: $0 &#x3c;command&#x3e; [options]&#x27;)
-    .command(&#x27;count&#x27;, &#x27;Count the lines in a file&#x27;)
-    .example(&#x27;$0 count -f foo.js&#x27;, &#x27;count the lines in the given file&#x27;)
-    .alias(&#x27;f&#x27;, &#x27;file&#x27;)
-    .nargs(&#x27;f&#x27;, 1)
-    .describe(&#x27;f&#x27;, &#x27;Load a file&#x27;)
-    .demandOption([&#x27;f&#x27;])
-    .<span class="apidocCodeKeywordSpan">help</span>(&#x27;h&#x27;)
-    .alias(&#x27;h&#x27;, &#x27;help&#x27;)
-    .epilog(&#x27;copyright 2015&#x27;)
+    .usage('Usage: $0 &lt;command&gt; [options]')
+    .command('count', 'Count the lines in a file')
+    .example('$0 count -f foo.js', 'count the lines in the given file')
+    .alias('f', 'file')
+    .nargs('f', 1)
+    .describe('f', 'Load a file')
+    .demandOption(['f'])
+    .<span class="apidocCodeKeywordSpan">help</span>('h')
+    .alias('h', 'help')
+    .epilog('copyright 2015')
     .argv;
 
-var fs = require(&#x27;fs&#x27;);
+var fs = require('fs');
 var s = fs.createReadStream(argv.file);
 ...</pre></li>
     </ul>
@@ -2350,14 +2343,14 @@ var s = fs.createReadStream(argv.file);
     <ul>
     <li>description and source-code<pre class="apidocCodePre">implies = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  .usage(&#x22;$0 -operand1 number -operand2 number -operation [add|subtract]&#x22;)
+  .usage("$0 -operand1 number -operand2 number -operation [add|subtract]")
   .help()
   .argv
 ```
 
 Later on, `argv` can be retrieved with `yargs.argv`.
 
-&#x3c;a name=&#x22;implies&#x22;&#x3e;&#x3c;/a&#x3e;.<span class="apidocCodeKeywordSpan">implies</span>(x, y)
+&lt;a name="implies"&gt;&lt;/a&gt;.<span class="apidocCodeKeywordSpan">implies</span>(x, y)
 --------------
 
 Given the key `x` is set, it is required that the key `y` is set.
@@ -2379,7 +2372,7 @@ Optionally `.implies()` can accept an object specifying multiple implications.
     <ul>
     <li>description and source-code<pre class="apidocCodePre">locale = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-&#x3c;a name=&#x22;implies&#x22;&#x3e;&#x3c;/a&#x3e;.implies(x, y)
+&lt;a name="implies"&gt;&lt;/a&gt;.implies(x, y)
 --------------
 
 Given the key `x` is set, it is required that the key `y` is set.
@@ -2391,8 +2384,8 @@ Optionally `.implies()` can accept an object specifying multiple implications.
 
 Return the locale that yargs is currently using.
 
-By default, yargs will auto-detect the operating system&#x27;s locale so that
-yargs-generated help content will display in the user&#x27;s language.
+By default, yargs will auto-detect the operating system's locale so that
+yargs-generated help content will display in the user's language.
 ...</pre></li>
     </ul>
 
@@ -2409,17 +2402,17 @@ yargs-generated help content will display in the user&#x27;s language.
     <li>example usage<pre class="apidocCodePre">...
 ````javascript
 #!/usr/bin/env node
-var argv = require(&#x27;yargs&#x27;)
-.usage(&#x27;Usage: $0 &#x3c;command&#x3e; [options]&#x27;)
-.command(&#x27;count&#x27;, &#x27;Count the lines in a file&#x27;)
-.example(&#x27;$0 count -f foo.js&#x27;, &#x27;count the lines in the given file&#x27;)
-.alias(&#x27;f&#x27;, &#x27;file&#x27;)
-.<span class="apidocCodeKeywordSpan">nargs</span>(&#x27;f&#x27;, 1)
-.describe(&#x27;f&#x27;, &#x27;Load a file&#x27;)
-.demandOption([&#x27;f&#x27;])
-.help(&#x27;h&#x27;)
-.alias(&#x27;h&#x27;, &#x27;help&#x27;)
-.epilog(&#x27;copyright 2015&#x27;)
+var argv = require('yargs')
+.usage('Usage: $0 &lt;command&gt; [options]')
+.command('count', 'Count the lines in a file')
+.example('$0 count -f foo.js', 'count the lines in the given file')
+.alias('f', 'file')
+.<span class="apidocCodeKeywordSpan">nargs</span>('f', 1)
+.describe('f', 'Load a file')
+.demandOption(['f'])
+.help('h')
+.alias('h', 'help')
+.epilog('copyright 2015')
 .argv;
 ...</pre></li>
     </ul>
@@ -2447,9 +2440,9 @@ all other modifications, such as [`.<span class="apidocCodeKeywordSpan">normaliz
 _Examples:_
 
 ```js
-var argv = require(&#x27;yargs&#x27;)
-.coerce(&#x27;file&#x27;, function (arg) {
-  return require(&#x27;fs&#x27;).readFileSync(arg, &#x27;utf8&#x27;)
+var argv = require('yargs')
+.coerce('file', function (arg) {
+  return require('fs').readFileSync(arg, 'utf8')
 ...</pre></li>
     </ul>
 
@@ -2466,12 +2459,12 @@ var argv = require(&#x27;yargs&#x27;)
     <li>example usage<pre class="apidocCodePre">...
 Optionally `.nargs()` can take an object of `key`/`narg` pairs.
 
-&#x3c;a name=&#x22;normalize&#x22;&#x3e;&#x3c;/a&#x3e;.normalize(key)
+&lt;a name="normalize"&gt;&lt;/a&gt;.normalize(key)
 ---------------
 
 The key provided represents a path and should have `path.normalize()` applied.
 
-&#x3c;a name=&#x22;number&#x22;&#x3e;&#x3c;/a&#x3e;.<span class="apidocCodeKeywordSpan">number</span>(key)
+&lt;a name="number"&gt;&lt;/a&gt;.<span class="apidocCodeKeywordSpan">number</span>(key)
 ------------
 
 Tell the parser to always interpret `key` as a number.
@@ -2499,11 +2492,11 @@ choices.
 Choices can also be specified as `choices` in the object given to `option()`.
 
 ```js
-var argv = require(&#x27;yargs&#x27;)
-  .<span class="apidocCodeKeywordSpan">option</span>(&#x27;size&#x27;, {
-    alias: &#x27;s&#x27;,
-    describe: &#x27;choose a size&#x27;,
-    choices: [&#x27;xs&#x27;, &#x27;s&#x27;, &#x27;m&#x27;, &#x27;l&#x27;, &#x27;xl&#x27;]
+var argv = require('yargs')
+  .<span class="apidocCodeKeywordSpan">option</span>('size', {
+    alias: 's',
+    describe: 'choose a size',
+    choices: ['xs', 's', 'm', 'l', 'xl']
   })
   .argv
 ```
@@ -2532,10 +2525,10 @@ this is useful when using `.<span class="apidocCodeKeywordSpan">options</span>()
 
 ```javascript
 // demand individual options within the option constructor
-require(&#x27;yargs&#x27;)
+require('yargs')
 .options({
-  &#x27;run&#x27;: {
-    alias: &#x27;r&#x27;,
+  'run': {
+    alias: 'r',
 ...</pre></li>
     </ul>
 
@@ -2554,13 +2547,13 @@ require(&#x27;yargs&#x27;)
 You can pass in the `process.argv` yourself:
 
 ````javascript
-require(&#x27;yargs&#x27;)([ &#x27;-x&#x27;, &#x27;1&#x27;, &#x27;-y&#x27;, &#x27;2&#x27; ]).argv
+require('yargs')([ '-x', '1', '-y', '2' ]).argv
 ````
 
 or use `.<span class="apidocCodeKeywordSpan">parse</span>()` to do the same thing:
 
 ````javascript
-require(&#x27;yargs&#x27;).parse([ &#x27;-x&#x27;, &#x27;1&#x27;, &#x27;-y&#x27;, &#x27;2&#x27; ])
+require('yargs').parse([ '-x', '1', '-y', '2' ])
 ````
 
 The rest of these methods below come in just before the terminating `.argv`.
@@ -2614,7 +2607,7 @@ as a configuration object.
 from this location.
 
 Note that a configuration stanza in package.json may extend from an identically keyed stanza in another package.json file using
-the `&#x22;extends&#x22;` property. When doing so, the `&#x22;extends&#x22;` value should be a path (relative or absolute) to the
+the `"extends"` property. When doing so, the `"extends"` value should be a path (relative or absolute) to the
  extended package.json file.
 
 .<span class="apidocCodeKeywordSpan">recommendCommands</span>()
@@ -2653,7 +2646,7 @@ command is found?
 
 An alias for [`demand()`](#demand). See docs there.
 
-&#x3c;a name=&#x22;requiresArg&#x22;&#x3e;&#x3c;/a&#x3e;.requiresArg(key)
+&lt;a name="requiresArg"&gt;&lt;/a&gt;.requiresArg(key)
 ...</pre></li>
     </ul>
 
@@ -2680,7 +2673,7 @@ command is found?
 
 An alias for [`demand()`](#demand). See docs there.
 
-&#x3c;a name=&#x22;requiresArg&#x22;&#x3e;&#x3c;/a&#x3e;.requiresArg(key)
+&lt;a name="requiresArg"&gt;&lt;/a&gt;.requiresArg(key)
 -----------------
 ...</pre></li>
     </ul>
@@ -2703,7 +2696,7 @@ An alias for [`demand()`](#demand). See docs there.
 
 An alias for [`demand()`](#demand). See docs there.
 
-&#x3c;a name=&#x22;requiresArg&#x22;&#x3e;&#x3c;/a&#x3e;.<span class="apidocCodeKeywordSpan">requiresArg</span>(key)
+&lt;a name="requiresArg"&gt;&lt;/a&gt;.<span class="apidocCodeKeywordSpan">requiresArg</span>(key)
 -----------------
 
 Specifies either a single option key (string), or an array of options that
@@ -2732,7 +2725,7 @@ usage information and exit.
 The default behavior is to set the value of any key not followed by an
 option value to `true`.
 
-&#x3c;a name=&#x22;reset&#x22;&#x3e;&#x3c;/a&#x3e;.<span class="apidocCodeKeywordSpan">reset</span>()
+&lt;a name="reset"&gt;&lt;/a&gt;.<span class="apidocCodeKeywordSpan">reset</span>()
 --------
 
 Reset the argument object built up so far. This is useful for
@@ -2754,7 +2747,7 @@ to specify keys that should not be reset.
     <ul>
     <li>description and source-code<pre class="apidocCodePre">resetOptions = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  output = &#x27;&#x27;
+  output = ''
   exitError = null
   hasOutput = false
   self.parsed = false
@@ -2763,7 +2756,7 @@ to specify keys that should not be reset.
 }
 self.<span class="apidocCodeKeywordSpan">resetOptions</span>()
 
-// temporary hack: allow &#x22;freezing&#x22; of reset-able state for parse(msg, cb)
+// temporary hack: allow "freezing" of reset-able state for parse(msg, cb)
 var frozen
 function freeze () {
   frozen = {}
@@ -2784,7 +2777,7 @@ function freeze () {
     <li>description and source-code<pre class="apidocCodePre">showCompletionScript = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
-  console.log(&#x27;world!&#x27;);
+  console.log('world!');
 } else {
   yargs.showHelp();
 }
@@ -2797,7 +2790,7 @@ Generate a bash completion script. Users of your application can install this
 script in their `.bashrc`, and yargs will provide completion shortcuts for
 commands and options.
 
-.showHelp(consoleLevel=&#x27;error&#x27;)
+.showHelp(consoleLevel='error')
 ...</pre></li>
     </ul>
 
@@ -2812,12 +2805,12 @@ commands and options.
     <ul>
     <li>description and source-code<pre class="apidocCodePre">showHelp = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    .usage(&#x27;$0 world&#x27;)
-    .help(&#x27;h&#x27;)
-    .example(&#x27;$0 world&#x27;, &#x27;print the world message!&#x27;)
+    .usage('$0 world')
+    .help('h')
+    .example('$0 world', 'print the world message!')
     .argv
 
-  console.log(&#x27;world!&#x27;);
+  console.log('world!');
 } else {
   yargs.<span class="apidocCodeKeywordSpan">showHelp</span>();
 }
@@ -2843,7 +2836,7 @@ Generate a bash completion script. Users of your application can install this
     <li>example usage<pre class="apidocCodePre">...
 
 ```js
-yargs.showHelp(&#x22;log&#x22;); //prints to stdout using console.log()
+yargs.showHelp("log"); //prints to stdout using console.log()
 ```
 
 Later on, `argv` can be retrieved with `yargs.argv`.
@@ -2876,7 +2869,7 @@ Missing argument value: f
 Specify --help for available options
 ```
 
-&#x3c;a name=&#x22;skipValidation&#x22;&#x3e;&#x3c;/a&#x3e;.<span class="apidocCodeKeywordSpan">skipValidation</span>(key)
+&lt;a name="skipValidation"&gt;&lt;/a&gt;.<span class="apidocCodeKeywordSpan">skipValidation</span>(key)
 -----------------
 
 Specifies either a single option key (string), or an array of options.
@@ -2899,7 +2892,7 @@ If any of the options is present, yargs validation is skipped.
     <li>description and source-code<pre class="apidocCodePre">strict = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
-&#x3c;a name=&#x22;skipValidation&#x22;&#x3e;&#x3c;/a&#x3e;.skipValidation(key)
+&lt;a name="skipValidation"&gt;&lt;/a&gt;.skipValidation(key)
 -----------------
 
 Specifies either a single option key (string), or an array of options.
@@ -2929,12 +2922,12 @@ at the top-level and for each sub-command.
     <li>example usage<pre class="apidocCodePre">...
 
 ````javascript
-var argv = require(&#x27;yargs&#x27;)
-    .alias(&#x27;f&#x27;, &#x27;file&#x27;)
-    .demandOption(&#x27;f&#x27;)
-    .default(&#x27;f&#x27;, &#x27;/etc/passwd&#x27;)
-    .describe(&#x27;f&#x27;, &#x27;x marks the spot&#x27;)
-    .<span class="apidocCodeKeywordSpan">string</span>(&#x27;f&#x27;)
+var argv = require('yargs')
+    .alias('f', 'file')
+    .demandOption('f')
+    .default('f', '/etc/passwd')
+    .describe('f', 'x marks the spot')
+    .<span class="apidocCodeKeywordSpan">string</span>('f')
     .argv
 ;
 ````
@@ -2957,14 +2950,14 @@ Optionally `.options()` can take an object that maps keys to `opt` parameters.
     <li>description and source-code<pre class="apidocCodePre">terminalWidth = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
-&#x3c;a name=&#x22;wrap&#x22;&#x3e;&#x3c;/a&#x3e;.wrap(columns)
+&lt;a name="wrap"&gt;&lt;/a&gt;.wrap(columns)
 --------------
 
 Format usage output to wrap at `columns` many columns.
 
 By default wrap will be set to `Math.min(80, windowWidth)`. Use `.wrap(null)` to
 specify no column limit (no right-align). Use `.wrap(yargs.<span class="apidocCodeKeywordSpan">terminalWidth</span>())` to
-maximize the width of yargs&#x27; usage instructions.
+maximize the width of yargs' usage instructions.
 
 parsing tricks
 ==============
@@ -2989,7 +2982,7 @@ This can be useful if you need to preserve leading zeros in an input.
 
 If `key` is an array, interpret all the elements as strings.
 
-`.string(&#x27;_&#x27;)` will result in non-hyphenated arguments being interpreted as strings,
+`.string('_')` will result in non-hyphenated arguments being interpreted as strings,
 regardless of whether they resemble numbers.
 
 .<span class="apidocCodeKeywordSpan">updateLocale</span>(obj)
@@ -3015,7 +3008,7 @@ pairs provided in `obj`:
     <li>example usage<pre class="apidocCodePre">...
 If `key` is an array, interpret all the elements as strings.
 
-`.string(&#x27;_&#x27;)` will result in non-hyphenated arguments being interpreted as strings,
+`.string('_')` will result in non-hyphenated arguments being interpreted as strings,
 regardless of whether they resemble numbers.
 
 .updateLocale(obj)
@@ -3027,7 +3020,7 @@ Override the default strings used by yargs with the key/value
 pairs provided in `obj`:
 
 ```js
-var argv = require(&#x27;yargs&#x27;)
+var argv = require('yargs')
 ...</pre></li>
     </ul>
 
@@ -3048,12 +3041,12 @@ area.js:
 
 ````javascript
 #!/usr/bin/env node
-var argv = require(&#x27;yargs&#x27;)
-    .<span class="apidocCodeKeywordSpan">usage</span>(&#x27;Usage: $0 -w [num] -h [num]&#x27;)
-    .demandOption([&#x27;w&#x27;,&#x27;h&#x27;])
+var argv = require('yargs')
+    .<span class="apidocCodeKeywordSpan">usage</span>('Usage: $0 -w [num] -h [num]')
+    .demandOption(['w','h'])
     .argv;
 
-console.log(&#x22;The area is:&#x22;, argv.w * argv.h);
+console.log("The area is:", argv.w * argv.h);
 ````
 
 ***
@@ -3078,7 +3071,7 @@ present script similar to how `$0` works in bash or perl.
 
 `opts` is optional and acts like calling `.options(opts)`.
 
-&#x3c;a name=&#x22;version&#x22;&#x3e;&#x3c;/a&#x3e;.<span class="apidocCodeKeywordSpan">version</span>([option], [description], [
+&lt;a name="version"&gt;&lt;/a&gt;.<span class="apidocCodeKeywordSpan">version</span>([option], [description], [
 version])
 ----------------------------------------
 
@@ -3101,8 +3094,8 @@ of your module and use its `version` value. The default value of `option` is `--
     <ul>
     <li>description and source-code<pre class="apidocCodePre">wrap = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  builder: (yargs) =&#x3e; yargs.default(&#x27;value&#x27;, &#x27;true&#x27;),
-  handler: (argv) =&#x3e; {
+  builder: (yargs) =&gt; yargs.default('value', 'true'),
+  handler: (argv) =&gt; {
     console.log(`setting ${argv.key} to ${argv.value}`)
   }
 })
@@ -3129,8 +3122,8 @@ start [app]              Start up an app            [aliases: run, up]
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function YError(msg) {
-  this.name = &#x27;YError&#x27;
-  this.message = msg || &#x27;yargs error&#x27;
+  this.name = 'YError'
+  this.message = msg || 'yargs error'
   Error.captureStackTrace(this, YError)
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -3161,13 +3154,13 @@ start [app]              Start up an app            [aliases: run, up]
   var command = null
   var completion = null
   var groups = {}
-  var output = &#x27;&#x27;
+  var output = ''
   var preservedGroups = {}
   var usage = null
   var validation = null
 
   const y18n = Y18n({
-    directory: path.resolve(__dirname, &#x27;./locales&#x27;),
+    directory: path.resolve(__dirname, './locales'),
     updateFiles: false
   })
 
@@ -3178,15 +3171,15 @@ start [app]              Start up an app            [aliases: run, up]
     .map(function (x, i) {
       // ignore the node bin, specify this in your
       // bin file with #!/usr/bin/env node
-      if (i === 0 &#x26;&#x26; /\b(node|iojs)(\.exe)?$/.test(x)) return
+      if (i === 0 &amp;&amp; /\b(node|iojs)(\.exe)?$/.test(x)) return
       var b = rebase(cwd, x)
-      return x.match(/^(\/|([a-zA-Z]:)?\\)/) &#x26;&#x26; b.length &#x3c; x.length ? b : x
+      return x.match(/^(\/|([a-zA-Z]:)?\\)/) &amp;&amp; b.length &lt; x.length ? b : x
     })
-    .join(&#x27; &#x27;).trim()
+    .join(' ').trim()
 
-  if (process.env._ !== undefined &#x26;&#x26; process.argv[1] === process.env._) {
+  if (process.env._ !== undefined &amp;&amp; process.argv[1] === process.env._) {
     self.$0 = process.env._.replace(
-      path.dirname(process.execPath) + &#x27;/&#x27;, &#x27;&#x27;
+      path.dirname(process.execPath) + '/', ''
     )
   }
 
@@ -3198,7 +3191,7 @@ start [app]              Start up an app            [aliases: run, up]
   }
 
   // puts yargs back into an initial state. any keys
-  // that have been set to &#x22;global&#x22; will not be reset
+  // that have been set to "global" will not be reset
   // by this action.
   var options
   self.resetOptions = self.reset = function (aliases) {
@@ -3227,7 +3220,7 @@ start [app]              Start up an app            [aliases: run, up]
       var keys = groups[groupName].filter(function (key) {
         return !(key in localLookup)
       })
-      if (keys.length &#x3e; 0) {
+      if (keys.length &gt; 0) {
         acc[groupName] = keys
       }
       return acc
@@ -3236,13 +3229,13 @@ start [app]              Start up an app            [aliases: run, up]
     groups = {}
 
     var arrayOptions = [
-      &#x27;array&#x27;, &#x27;boolean&#x27;, &#x27;string&#x27;, &#x27;requiresArg&#x27;, &#x27;skipValidation&#x27;,
-      &#x27;count&#x27;, &#x27;normalize&#x27;, &#x27;number&#x27;
+      'array', 'boolean', 'string', 'requiresArg', 'skipValidation',
+      'count', 'normalize', 'number'
     ]
 
     var objectOptions = [
-      &#x27;narg&#x27;, &#x27;key&#x27;, &#x27;alias&#x27;, &#x27;default&#x27;, &#x27;defaultDescription&#x27;,
-      &#x27;config&#x27;, &#x27;choices&#x27;, &#x27;demandedOptions&#x27;, &#x27;demandedCommands&#x27;, &#x27;coerce&#x27;
+      'narg', 'key', 'alias', 'default', 'defaultDescription',
+      'config', 'choices', 'demandedOptions', 'demandedCommands', 'coerce'
     ]
 
     arrayOptions.forEach(function (k) {
@@ -3269,7 +3262,7 @@ start [app]              Start up an app            [aliases: run, up]
 
     if (!strictGlobal) strict = false
     completionCommand = null
-    output = &#x27;&#x27;
+    output = ''
     exitError = null
     hasOutput = false
     self.parsed = false
@@ -3278,7 +3271,7 @@ start [app]              Start up an app            [aliases: run, up]
   }
   self.resetOptions()
 
-  // temporary hack: allow &#x22;freezing&#x22; of reset-able state for parse(msg, cb)
+  // temporary hack: allow "freezing" of reset-able state for parse(msg, cb)
   var frozen
   function freeze () {
     frozen = {}
@@ -3323,8 +3316,8 @@ start [app]              Start up an app            [aliases: run, up]
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function YError(msg) {
-  this.name = &#x27;YError&#x27;
-  this.message = msg || &#x27;yargs error&#x27;
+  this.name = 'YError'
+  this.message = msg || 'yargs error'
   Error.captureStackTrace(this, YError)
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -3345,8 +3338,8 @@ start [app]              Start up an app            [aliases: run, up]
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function YError(msg) {
-  this.name = &#x27;YError&#x27;
-  this.message = msg || &#x27;yargs error&#x27;
+  this.name = 'YError'
+  this.message = msg || 'yargs error'
   Error.captureStackTrace(this, YError)
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -3361,3 +3354,4 @@ start [app]              Start up an app            [aliases: run, up]
     ]
 </div>
 </div>
+</body></html>
