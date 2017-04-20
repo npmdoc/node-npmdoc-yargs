@@ -47,7 +47,7 @@
 }
 </style>
 <h1>api documentation for
-    <a href="http://yargs.js.org/">yargs (v7.0.2)</a>
+    <a href="http://yargs.js.org/">yargs (v7.1.0)</a>
 </h1>
 <h4>yargs the modern, pirate-themed, successor to optimist.</h4>
 <div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
@@ -1075,20 +1075,21 @@ if (!yargs._hasOutput()) yargs._runValidation(innerArgv, aliases, positionalMap,
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_hasParseCallback = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-        logger.error(failMessage)
-      }
-    }
 
-    err = err || new YError(msg)
-    if (yargs.getExitProcess()) {
-      return yargs.exit(1)
-    } else if (yargs.<span class="apidocCodeKeywordSpan">_hasParseCallback</span>()) {
-      return yargs.exit(1, err)
-    } else {
-      throw err
-    }
-  }
-}
+// we use a custom logger that buffers output,
+// so that we can print to non-CLIs, e.g., chat-bots.
+var _logger = {
+  log: function () {
+    const args = []
+    for (var i = 0; i &lt; arguments.length; i++) args.push(arguments[i])
+    if (!self.<span class="apidocCodeKeywordSpan">_hasParseCallback</span>()) console.log.apply(console, args)
+    hasOutput = true
+    if (output.length) output += '\n'
+    output += args.join(' ')
+  },
+  error: function () {
+    const args = []
+    for (var i = 0; i &lt; arguments.length; i++) args.push(arguments[i])
 ...</pre></li>
     </ul>
 
@@ -1103,23 +1104,21 @@ if (!yargs._hasOutput()) yargs._runValidation(innerArgv, aliases, positionalMap,
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_parseArgs = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  // and did not explicitly set a usage() string, then apply the
-  // original command string as usage() for consistent behavior with
-  // options object below.
-  if (yargs.parsed === false) {
-    if (typeof yargs.getUsageInstance().getUsage() === 'undefined') {
-      yargs.usage('$0 ' + (parentCommands.length ? parentCommands.join(' ') + ' ' : '') +
-commandHandler.original)
-    }
-    innerArgv = innerYargs ? innerYargs.<span class="apidocCodeKeywordSpan">_parseArgs</span>(null, null, true) : yargs._parseArgs
-(null, null, true)
-  } else {
-    innerArgv = yargs.parsed.argv
-  }
+  // completion short-circuits the parsing process,
+  // skipping validation, etc.
+  if (!shortCircuit) processArgs = args
 
-  if (innerYargs &amp;&amp; yargs.parsed === false) aliases = innerYargs.parsed.aliases
-  else aliases = yargs.parsed.aliases
-} else if (typeof commandHandler.builder === 'object') {
+  freeze()
+  if (parseFn) exitProcess = false
+
+  var parsed = self.<span class="apidocCodeKeywordSpan">_parseArgs</span>(args, shortCircuit)
+  if (parseFn) parseFn(exitError, parsed, output)
+  unfreeze()
+
+  return parsed
+}
+
+self._getParseContext = function () {
 ...</pre></li>
     </ul>
 
@@ -1134,22 +1133,20 @@ commandHandler.original)
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_runValidation = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
+  // or if explicitly skipped, we won't run validations.
+  if (!skipValidation) {
+    if (parsed.error) throw new YError(parsed.error.message)
 
-if (!yargs._hasOutput()) {
-  positionalMap = populatePositionals(commandHandler, innerArgv, currentContext, yargs)
+    // if we're executed via bash completion, don't
+    // bother with validation.
+    if (!argv[completion.completionKey]) {
+      self.<span class="apidocCodeKeywordSpan">_runValidation</span>(argv, aliases, {}, parsed.error)
+    }
+  }
+} catch (err) {
+  if (err instanceof YError) usage.fail(err.message, err)
+  else throw err
 }
-
-// we apply validation post-hoc, so that custom
-// checks get passed populated positional arguments.
-if (!yargs._hasOutput()) yargs.<span class="apidocCodeKeywordSpan">_runValidation</span>(innerArgv, aliases, positionalMap, yargs
-.parsed.error)
-
-if (commandHandler.handler &amp;&amp; !yargs._hasOutput()) {
-  yargs._setHasOutput()
-  commandHandler.handler(innerArgv)
-}
-
-if (command) currentContext.commands.pop()
 ...</pre></li>
     </ul>
 
@@ -2015,21 +2012,22 @@ Allows to programmatically get completion choices for any line.
     <ul>
     <li>description and source-code<pre class="apidocCodePre">getContext = function () { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  self.hasDefaultCommand = function () {
-return !!defaultCommand
-  }
+  command.addHandler(cmd, description, builder, handler)
+  return self
+}
 
-  self.runCommand = function (command, yargs, parsed) {
-var aliases = parsed.aliases
-var commandHandler = handlers[command] || handlers[aliasMap[command]] || defaultCommand
-var currentContext = yargs.<span class="apidocCodeKeywordSpan">getContext</span>()
-var numFiles = currentContext.files.length
-var parentCommands = currentContext.commands.slice()
+self.commandDir = function (dir, opts) {
+  argsert('&lt;string&gt; [object]', [dir, opts], arguments.length)
+  const req = parentRequire || require
+  command.addDirectory(dir, self.<span class="apidocCodeKeywordSpan">getContext</span>(), req, require('get-caller-file'
+;)(), opts)
+  return self
+}
 
-// what does yargs look like after the buidler is run?
-var innerArgv = parsed.argv
-var innerYargs = null
-var positionalMap = {}
+// TODO: deprecate self.demand in favor of
+// .demandCommand() .demandOption().
+self.demand = self.required = self.require = function (keys, max, msg) {
+  // you can optionally provide a 'max' key,
 ...</pre></li>
     </ul>
 
